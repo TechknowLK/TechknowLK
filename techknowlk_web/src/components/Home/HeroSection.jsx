@@ -23,7 +23,7 @@ const HeroSection = () => {
               Transforming Businesses with Smart Technology
             </h1>
             <h1 className="text-7xl font-bold">
-              <TypeAnimation
+              <TypeAnimation className="display-inline-block whitespace-pre-line  "
                 sequence={[
                   "Smart Solutions \n For every Business.",
                   2000,
@@ -34,11 +34,7 @@ const HeroSection = () => {
                 ]}
                 wrapper="span"
                 speed={40}
-                style={{
-                  display: "inline-block",
-                  whiteSpace: "pre-line ",
-                  height: "150px",
-                }}
+               
                 repeat={Infinity}
               />
             </h1>
@@ -51,10 +47,10 @@ const HeroSection = () => {
           
 
             <div className="flex flex-row gap-5">
-              <button className="w-1/5 bg-[#33A1E0] px-5 py-3 rounded-xl text-lg  hover:shadow-xl hover:shadow-cyan-500/50 hover:scale-105 transition">
+              <button className="w-1/5 bg-[#33A1E0] px-5 py-3 rounded-xl text-lg  hover:shadow-xl hover:shadow-cyan-500/50 hover:scale-105 transition duration-500">
                 Contact Us 
               </button>
-              <button className="w-1/5 bg-transparent border-2 border-white px-5 py-3 rounded-xl text-lg  hover:bg-white hover:text-black hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/50 transition">
+              <button className="w-1/5 bg-transparent border-2 border-white px-5 py-3 rounded-xl text-lg  hover:bg-white hover:text-black hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/50 transition duration-500">
                 Learn More
               </button>
             </div>
