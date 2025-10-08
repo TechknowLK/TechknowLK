@@ -28,7 +28,7 @@ export default function Footer() {
                             />
                         </div>
                         <div>
-                            <h1 className="text-[#33A1E0] text-2xl font-bold">
+                            <h1 className="text-[#F5F5F5] text-2xl font-bold">
                                 TECHKNOW LANKA ENGINEERS
                             </h1>
                             <p className="text-[#a9abad] text-lg">Pvt (Ltd)</p>
