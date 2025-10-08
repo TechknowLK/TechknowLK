@@ -38,13 +38,12 @@ const bgStyle = {
       {/* content */}
       <div className="relative z-10 max-w-4xl">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-sm">
-          <span className="text-white">About </span>
-          <span className="text-[#33A1E0]">TechknowLK</span>
+          <span className="text-white">Our </span>
+          <span className="text-[#33A1E0]">Projects</span>
         </h1>
 
         <p className="mt-6 text-lg md:text-xl text-gray-200/90 font-light leading-relaxed max-w-3xl mx-auto">
-          A multinational technology company dedicated to empowering businesses with
-          innovative IT solutions, IoT implementations, and smart automation systems.
+        Delivering excellence across diverse industries with innovative technology solutions
         </p>
       </div>
 
