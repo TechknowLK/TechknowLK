@@ -1,5 +1,6 @@
 import React from 'react'
 import Button01 from '../Button01'
+import Button02 from '../Button02'
 
 export default function OtherSection1() {
     return (
@@ -14,6 +15,8 @@ export default function OtherSection1() {
                 </p>
                 <div className='w-full flex justify-center items-center py-4'>
                     <Button01 label="Get in Touch" onClick={() => alert("Clicked!")} />
+                    
+
                 </div>
 
             </div>
