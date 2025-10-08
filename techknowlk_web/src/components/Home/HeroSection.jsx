@@ -23,7 +23,7 @@ const HeroSection = () => {
               Transforming Businesses with Smart Technology
             </h1>
             <h1 className="text-7xl font-bold">
-              <TypeAnimation className="display-inline-block whitespace-pre-line  "
+              <TypeAnimation className="display-inline-block whitespace-pre-line height-[150px]"
                 sequence={[
                   "Smart Solutions \n For every Business.",
                   2000,
@@ -34,7 +34,6 @@ const HeroSection = () => {
                 ]}
                 wrapper="span"
                 speed={40}
-               
                 repeat={Infinity}
               />
             </h1>
