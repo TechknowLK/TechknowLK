@@ -3,10 +3,7 @@ import {
   Cpu,
   AppWindow,
   Cog,
-  HelpingHand,
   Headphones,
-  Mic,
-  ArrowRight,
 } from "lucide-react";
 import ServiceCard from "./ServiceCard";
 import Button01 from "../Button01";
@@ -65,8 +62,6 @@ export default function ServiceSection() {
             title="IT Support & Consulting"
             description="24/7 technical support, IT consulting, and strategic technology planning to keep your business running smoothly."
             icon={<Headphones size={42} color="white" />}
-            //    icon={<Mic size={42} color="white" />}
-            // icon={<HelpingHand size={42} color="white" />}
             bulletPoints={[
               "24/7 Support",
               "IT Consulting",
