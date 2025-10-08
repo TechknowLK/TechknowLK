@@ -9,6 +9,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import ServiceCard from "./ServiceCard";
+import Button01 from "../Button01";
 
 export default function ServiceSection() {
   return (
@@ -18,12 +19,15 @@ export default function ServiceSection() {
           <span className="text-[#626262]">Our </span>
           <span className="text-[#33A1E0]">Services</span>
         </h1>
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-light leading-tight drop-shadow-sm mt-4 px-4 max-w-3xl mx-auto">
+
+        <p className="text-xl mt-6 text-muted-foreground max-w-2xl mx-auto text-[#626262]">
           Comprehensive technology solutions designed to transform your business
           operations and drive growth.
-        </h2>
+        </p>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 w-7xl  px-6 mx-auto mb-12">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 
+            px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mx-auto mb-12"
+        >
           <ServiceCard
             title="Electronics & Networking"
             description="Professional network infrastructure, hardware solutions, and system integration for optimal business connectivity."
@@ -70,22 +74,12 @@ export default function ServiceSection() {
             ]}
           />
         </div>
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-light leading-tight drop-shadow-sm mt-4 px-4 max-w-3xl mx-auto">
-          Ready to transform your business with our comprehensive solutions?
-        </h2>
-        <div className="flex justify-center mt-6  ">
-          <button
-            className="bg-[#33A1E0] w-1/5  px-6 py-3 rounded-lg text-white items-center flex flex-row justify-center hover:shadow-xl hover:scale-105  hover:gap-2 
-             duration-500"
-          >
-            View All Services &nbsp;
-            <ArrowRight className="ml-1 h-4 w-4 " />
-          </button>
 
-          {/* <button className=" w-1/5  mt-6 bg-[#33A1E0] px-6 py-3 rounded-lg hover:shadow-xl hover:scale-105 text-white flex items-center hover:gap-5 transition-all duration-500">
-            Learn more &nbsp;
-            <ArrowRight className="ml-1 h-4 w-4 " />
-          </button> */}
+        <p className="text-xl mt-6 text-muted-foreground max-w-2xl mx-auto text-[#626262]">
+          Ready to transform your business with our comprehensive solutions?
+        </p>
+        <div className="flex justify-center mt-6  ">
+          <Button01 label={"Get Started"} />
         </div>
       </div>
     </>

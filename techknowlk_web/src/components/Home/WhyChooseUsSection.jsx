@@ -1,4 +1,4 @@
-import { Shield, Zap, Clock, Globe,CircleCheckBig  } from "lucide-react";
+import { Shield, Zap, Clock, Globe,CircleCheckBig ,ArrowRight } from "lucide-react";
 
 const features = [
   {
@@ -24,10 +24,9 @@ const features = [
 ];
 
 const achievements = [
-  { label: "ISO 9001:2015 Certified", value: "" },
-  { label: "10+ Years Industry Experience", value: "" },
-  { label: "500+ Successful Projects", value: "" },
-  { label: "100+ Enterprise Clients", value: "" },
+  { label: "04+ Years Industry Experience", value: "" },
+  { label: "50+ Successful Projects", value: "" },
+  { label: "40+ Enterprise Clients", value: "" },
   { label: "Award-Winning Solutions", value: "" },
   { label: "24/7 Technical Support", value: "" }
 ];
@@ -41,22 +40,22 @@ const WhyChoose = () => {
             <span className="text-[#626262]">Why Choose</span>
            <span className="text-[#33A1E0]">TechknowLK?</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-[#626262]">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-[#626262]">
             We combine innovation, expertise, and dedication to deliver exceptional technology solutions that drive your business forward.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-start px-6">
+        <div className="grid lg:grid-cols-3 gap-8 items-start px-6 ">
          
           <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="  shadow-[10px_10px_25px_rgba(0,0,0,0.25)] rounded-lg p-6  hover:scale-105 duration-300 transition-all"
+                className="  shadow-[10px_10px_25px_rgba(0,0,0,0.13)] rounded-lg p-6  hover:scale-105 duration-300 transition-all"
               >
                 <div className="text-[#ffffff] w-12 h-12 bg-[#33A1E0] rounded-lg flex items-center justify-center mb-4">
                   <feature.icon className="w-6 h-6 " />
-                </div>
+                </div>  
                 <h3 className="text-lg font-bold text-foreground mb-2">
                   {feature.title}
                 </h3>
@@ -81,8 +80,8 @@ const WhyChoose = () => {
                 </div>
               ))}
             </div>
-            <button className="mt-6 text-[#33A1E0] text-sm font-medium hover:underline">
-              Learn About Our Journey →
+            <button className="mt-6 text-[#ffffff] text-sm font-medium hover:text-[#33A1E0]">
+              Learn About Our Journey 
             </button>
           </div>
         </div>

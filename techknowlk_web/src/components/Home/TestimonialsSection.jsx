@@ -34,7 +34,7 @@ const Testimonials = () => {
             <span className="text-[#626262]">What Our </span>
            <span className="text-[#33A1E0]">Clients Say</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-[#626262]">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-[#626262]">
             Don't just take our word for it. Here's what industry leaders say about working with TechKnow Lanka.
           </p>
         </div>
@@ -43,7 +43,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card  rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.25)]   transition-all duration-500 hover:scale-105 px-10"
+              className="bg-card  rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)]   transition-all duration-500 hover:scale-105 px-10"
             >
               
               <div className="flex gap-1 mb-4">

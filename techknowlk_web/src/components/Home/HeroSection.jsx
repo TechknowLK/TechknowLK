@@ -2,12 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import video from "../../assets/Video/Hero.mp4";
 import { TypeAnimation } from "react-type-animation";
+import Button01 from "../Button01";
+import Button02 from "../Button02";
 // import { motion } from "framer-motion";
 
 const HeroSection = () => {
   {
     return (
-      <div className=" relative min-h-screen">
+      <div className=" relative min-h-screen ">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           autoPlay
@@ -47,12 +49,8 @@ const HeroSection = () => {
           
 
             <div className="flex flex-row gap-5">
-              <button className="w-1/5 bg-[#33A1E0] px-5 py-3 rounded-xl text-lg  hover:shadow-xl hover:shadow-cyan-500/50 hover:scale-105 transition duration-500">
-                Contact Us 
-              </button>
-              <button className="w-1/5 bg-transparent border-2 border-white px-5 py-3 rounded-xl text-lg  hover:bg-white hover:text-black hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/50 transition duration-500">
-                Learn More
-              </button>
+              
+              <Button01 label={"Explore More"} />
             </div>
           </div>
           {/* <motion.div
