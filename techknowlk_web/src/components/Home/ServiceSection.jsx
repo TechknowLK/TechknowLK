@@ -75,7 +75,7 @@ export default function ServiceSection() {
           />
         </div>
 
-        <p className="text-xl mt-6 text-muted-foreground max-w-2xl mx-auto text-[#626262]">
+        <p className="text-xl mt-6 text-muted-foreground max-w-2xl mx-auto text-[#626262] px-8">
           Ready to transform your business with our comprehensive solutions?
         </p>
         <div className="flex justify-center mt-6  ">

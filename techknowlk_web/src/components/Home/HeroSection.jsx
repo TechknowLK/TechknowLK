@@ -21,35 +21,36 @@ const HeroSection = () => {
         </video>
         <div className=" min-h-screen relative z-10 flex flex-row items-center  justify-between px-5 md:px-14 bg-[#012A43]/50 text-white">
           <div className="flex flex-col gap-5">
-            <h1 className="text-xl w-full  md:w-3/4">
+            <h1 className="text-lg  sm:text-lg md:text-lg lg:text-xl xl:text-2xl  w-full md:w-3/4 ">
               Transforming Businesses with Smart Technology
             </h1>
-            <h1 className="text-7xl font-bold">
-              <TypeAnimation 
-                sequence={[
-                  "Smart Solutions \n For every Business.",
-                  2000,
-                  "Intelligent Systems \n For Growth.",
-                  2000,
-                  "Connecting Ideas \n with Technology.",
-                  2000,
-                ]}
-                wrapper="span"
-                speed={40}
-                style={{ height: "150px" , display: "inline-block" , whiteSpace: "pre-line"}}
-                repeat={Infinity}
-              />
+
+            <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold ">
+              <div className="h-[80px] sm:h-[100px] md:h-[120px] lg:h-[140px] xl:h-[150px] ">
+                <TypeAnimation
+                  sequence={[
+                    "Smart Solutions \n For every Business.",
+                    2000,
+                    "Intelligent Systems \n For Growth.",
+                    2000,
+                    "Connecting Ideas \n with Technology.",
+                    2000,
+                  ]}
+                  wrapper="span"
+                  speed={40}
+                  style={{ display: "inline-block", whiteSpace: "pre-line" }}
+                  repeat={Infinity}
+                />
+              </div>
             </h1>
 
-            <h4 className="text-xl  w-full  md:w-3/4">
+            <h4 className="text-lg sm:text-sm md:text-sm lg:text-xl xl:text-2xl  w-full md:w-3/4">
               Partner with Techknow Lanka to revolutionize your business
               operations with cutting-edge technology, seamless automation, and
               innovative IoT solutions.
             </h4>
-          
 
             <div className="flex flex-row gap-5">
-              
               <Button01 label={"Explore More"} />
             </div>
           </div>
