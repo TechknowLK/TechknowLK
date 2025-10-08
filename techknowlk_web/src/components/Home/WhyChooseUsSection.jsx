@@ -46,17 +46,17 @@ const WhyChoose = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-start px-6">
+        <div className="grid lg:grid-cols-3 gap-8 items-start px-6 ">
          
           <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="  shadow-[10px_10px_25px_rgba(0,0,0,0.25)] rounded-lg p-6  hover:scale-105 duration-300 transition-all"
+                className="  shadow-[10px_10px_25px_rgba(0,0,0,0.13)] rounded-lg p-6  hover:scale-105 duration-300 transition-all"
               >
                 <div className="text-[#ffffff] w-12 h-12 bg-[#33A1E0] rounded-lg flex items-center justify-center mb-4">
                   <feature.icon className="w-6 h-6 " />
-                </div>
+                </div>  
                 <h3 className="text-lg font-bold text-foreground mb-2">
                   {feature.title}
                 </h3>

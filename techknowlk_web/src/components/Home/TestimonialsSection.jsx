@@ -43,7 +43,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card  rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.25)]   transition-all duration-500 hover:scale-105 px-10"
+              className="bg-card  rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)]   transition-all duration-500 hover:scale-105 px-10"
             >
               
               <div className="flex gap-1 mb-4">

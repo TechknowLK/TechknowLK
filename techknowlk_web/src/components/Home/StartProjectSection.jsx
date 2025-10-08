@@ -6,7 +6,7 @@ const StartProject = () => {
     <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-3xl font-bold text-[#626262] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#626262] mb-4 drop-shadow-sm">
             Ready to Experience the Difference?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 text-[#626262]">
