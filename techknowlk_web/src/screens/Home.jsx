@@ -5,6 +5,7 @@ import ServiceSection from '../components/Home/ServiceSection'
 import WhyChoose from '../components/Home/WhyChooseUsSection'
 import Testimonials from '../components/Home/TestimonialsSection'
 import StartProject from '../components/Home/StartProjectSection'
+import Footer from '../components/Footer'
 
 export const Home = () => {
   return (
@@ -15,6 +16,7 @@ export const Home = () => {
        <WhyChoose/>
        <StartProject/>
        <Testimonials/>
+       <Footer/>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 // import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar } from "lucide-react";
+
 import Button02 from "../Button02";
 import Button01 from "../Button01";
 
@@ -19,14 +19,7 @@ const StartProject = () => {
             <Button01 label={"Start Your Project"} />
             <Button02 label={"Schedule Consultation"} />
 
-            {/* <Button variant="hero" size="lg" className="group">
-              Start your project
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button> */}
-            {/* <Button variant="outline" size="lg">
-              <Calendar className="mr-2 h-4 w-4" />
-              Schedule Consultation
-            </Button> */}
+           
           </div>
         </div>
       </div>

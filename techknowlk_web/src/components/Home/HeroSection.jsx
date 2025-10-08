@@ -55,15 +55,15 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="hidden  lg:flex w-3/4 rounded-fill   justify-center"
           >
             <img className="h-140 text-center" src={img} alt="img" />
-          </motion.div>
-          
+          </motion.div> */}
+
         </div>
       </div>
     );
