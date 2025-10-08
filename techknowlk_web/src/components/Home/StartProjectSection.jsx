@@ -6,10 +6,10 @@ const StartProject = () => {
     <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-3xl font-bold text-[#626262] mb-4">
             Ready to Experience the Difference?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-lg text-muted-foreground mb-8 text-[#626262]">
             Join hundreds of satisfied clients who have transformed their businesses with our cutting-edge technology solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -52,7 +52,7 @@ const WhyChoose = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className=" border border-1  border-[#626262] rounded-lg p-6 shadow-lg hover:scale-105 duration-300 transition-all"
+                className="  shadow-[10px_10px_25px_rgba(0,0,0,0.25)] rounded-lg p-6  hover:scale-105 duration-300 transition-all"
               >
                 <div className="text-[#ffffff] w-12 h-12 bg-[#33A1E0] rounded-lg flex items-center justify-center mb-4">
                   <feature.icon className="w-6 h-6 " />

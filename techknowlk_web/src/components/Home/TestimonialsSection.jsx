@@ -34,7 +34,7 @@ const Testimonials = () => {
             <span className="text-[#626262]">What Our </span>
            <span className="text-[#33A1E0]">Clients Say</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-[#626262]">
             Don't just take our word for it. Here's what industry leaders say about working with TechKnow Lanka.
           </p>
         </div>
