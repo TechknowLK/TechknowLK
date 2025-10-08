@@ -1,4 +1,5 @@
 import React from "react";
+import video from "../../assets/Video/Hero.mp4";
 
 export default function HeroSection() {
   // main background: a centered radial glow (25% alpha for the blue)
@@ -22,8 +23,17 @@ export default function HeroSection() {
   return (
     <section
       style={bgStyle}
-      className="relative w-full h-[520px] flex items-center justify-center text-center px-6 overflow-hidden"
+      className="relative w-full h-[520px] flex items-center justify-center text-center px-6 overflow-hidden "
     >
+        <video
+                  className="absolute top-0 left-0 w-full h-[1000px] object-cover opacity-40"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src={video} type="video/mp4" />
+                </video>
       {/* vignette layer (darken edges) */}
       <div style={vignetteStyle} className="absolute inset-0 pointer-events-none" />
 

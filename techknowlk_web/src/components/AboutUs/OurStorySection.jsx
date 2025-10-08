@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function OurStorySection() {
     return (
-        <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 my-16'>
-            <div className='w-full h-[400px]'>
+        <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 my-16 '>
+            <div className='w-full'>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight drop-shadow-sm">
                     <span className="text-[#626262]">Our </span>
                     <span className="text-[#33A1E0]">Story</span>

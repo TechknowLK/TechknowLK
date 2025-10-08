@@ -3,6 +3,7 @@ import { NavBar } from '../components/NavBar'
 import HeroSection from '../components/AboutUs/HeroSection'
 import OurStorySection from '../components/AboutUs/OurStorySection'
 import VMSection from '../components/AboutUs/VMSection'
+import OtherSection1 from '../components/AboutUs/OtherSection1'
 
 export const AboutUs = () => {
   return (
@@ -11,6 +12,7 @@ export const AboutUs = () => {
        <HeroSection/>
        <OurStorySection/>
        <VMSection/>
+       <OtherSection1/>
     </div>
   )
 }
