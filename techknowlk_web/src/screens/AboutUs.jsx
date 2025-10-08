@@ -1,11 +1,12 @@
 import React from 'react'
+import { NavBar } from '../components/NavBar'
+import HeroSection from '../components/AboutUs/HeroSection'
 
 export const AboutUs = () => {
   return (
-   <div className='w-full h-full relative'>
-      <div className='flex justify-center items-center'>
-          <div className='text-[30px] text-blue-700'>About Page</div> 
-      </div>
-   </div>
+   <div className='relative w-full'>
+       <NavBar/>
+       <HeroSection/>
+    </div>
   )
 }
