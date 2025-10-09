@@ -139,7 +139,7 @@ const Index = () => {
   const [activeButton, setActiveButton] = useState(false);
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
+    AOS.init({ duration: 500, once: true, easing: "ease-in-out" });
     AOS.refresh();
   }, []);
 
@@ -150,9 +150,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="container mx-auto px-4 py-6" data-aos="fade-down">
+      <section className="container mx-auto px-4 py-6" >
         <div className="flex flex-wrap justify-center gap-4">
-          {/* <Button03 label="View All Products"  data-active={selectedCategory === "All"} onClick={() => setSelectedCategory("All")} /> */}
+     
           <Button03
             label="View All Products"
             state={activeButton === "All"}
@@ -162,15 +162,7 @@ const Index = () => {
             }}
           />
 
-          {/* {categories.map((category) => (
-            <Button03
-              state={activeButton}
-              label={category}
-              key={category}
-              data-active={selectedCategory === category}
-              onClick={() => setSelectedCategory(category)}
-            />
-          ))} */}
+      
           {categories.map((category) => (
             <Button03
               key={category}
