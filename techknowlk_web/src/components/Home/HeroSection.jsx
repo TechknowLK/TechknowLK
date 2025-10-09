@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import video from "../../assets/Video/Hero.mp4";
 import { TypeAnimation } from "react-type-animation";
 import Button01 from "../Button01";
+import Spline from "@splinetool/react-spline";
 import Button02 from "../Button02";
 // import { motion } from "framer-motion";
 
@@ -55,6 +56,26 @@ const HeroSection = () => {
             </div>
           </div>
 
+          {/* <div className="w-full h-[400px] ">
+          
+            <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+
+          </div> */}
+              {/* 3D Robot Side */}
+          <div className="relative w-full h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
+            <div className="absolute inset-0rounded-3xl blur-2xl" />
+            <div className="relative h-full rounded-3xl overflow-hidden ">
+              <Spline 
+                scene="https://prod.spline.design/JeAC1-lPvdoDE8Qj/scene.splinecode"
+                className="w-full h-full"
+              />
+              
+       
+     
+            </div>
+          </div>
+       
+
           {/* <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -63,7 +84,6 @@ const HeroSection = () => {
           >
             <img className="h-140 text-center" src={img} alt="img" />
           </motion.div> */}
-
         </div>
       </div>
     );
