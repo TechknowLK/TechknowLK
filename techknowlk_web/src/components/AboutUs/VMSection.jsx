@@ -7,7 +7,7 @@ import MissionIcon from '../../assets/img/mission-icon.png'
 
 export default function VMSection() {
     return (
-        <div className='w-full relative bg-[#DDE0E2] my-26'>
+        <div className='w-full relative bg-[#DDE0E2] my-16'>
             <div className=' max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 '>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
                     <div className='p-6 bg-[#154D71] rounded-lg shadow-md'>
