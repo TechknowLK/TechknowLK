@@ -3,7 +3,7 @@ import Button02 from "../Button02";
 
 export const ProjectCard = ({ title, description, image, technologies }) => {
   return (
-    <div className="overflow-hidden group transition-all duration-300 hover:shadow-lg rounded-lg border border-2 border-gray-200 bg-white">
+    <div className="overflow-hidden group transition-all duration-300 hover:shadow-lg rounded-lg  border-2 border-gray-200 bg-white">
       <div className="aspect-video overflow-hidden">
         <img
           src={image}
