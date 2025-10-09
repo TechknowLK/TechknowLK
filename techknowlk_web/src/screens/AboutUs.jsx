@@ -5,6 +5,7 @@ import OurStorySection from '../components/AboutUs/OurStorySection'
 import VMSection from '../components/AboutUs/VMSection'
 import OtherSection1 from '../components/AboutUs/OtherSection1'
 import Footer from '../components/Footer'
+import TeamSection from '../components/AboutUs/TeamSection'
 
 export const AboutUs = () => {
   return (
@@ -14,6 +15,7 @@ export const AboutUs = () => {
        <OurStorySection/>
        <VMSection/>
        <OtherSection1/>
+       <TeamSection/>
        <Footer/>
     </div>
   )
