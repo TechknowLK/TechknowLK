@@ -56,25 +56,14 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* <div className="w-full h-[400px] ">
-          
-            <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
-
-          </div> */}
-              {/* 3D Robot Side */}
           <div className="relative w-full h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
             <div className="absolute inset-0rounded-3xl blur-2xl" />
-            <div className="relative h-full rounded-3xl overflow-hidden ">
-              <Spline 
-                scene="https://prod.spline.design/JeAC1-lPvdoDE8Qj/scene.splinecode"
-                className="w-full h-full"
-              />
-              
-       
-     
+            <div className="relative h-full rounded-3xl overflow-hidden bg-white/5 border border-white/10">
+            
+
+              <Spline scene="https://prod.spline.design/mICLHptOtlmEe0Zh/scene.splinecode" />
             </div>
           </div>
-       
 
           {/* <motion.div
             initial={{ opacity: 0, x: 100 }}
