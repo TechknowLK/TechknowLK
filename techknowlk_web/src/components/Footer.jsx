@@ -20,11 +20,11 @@ export default function Footer() {
                 {/* Company Info */}
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-start'>
                     <div className='flex flex-row gap-3 items-center'>
-                        <div className='w-17 h-17 bg-[#F5F5F5] rounded-full flex items-center justify-center hover:shadow-lg hover:shadow-cyan-500/50'>
+                        <div className="hidden md:flex w-17 h-17 bg-[#F5F5F5] rounded-full items-center justify-center hover:shadow-lg hover:shadow-cyan-500/50">
                             <img
                                 src={logo}
                                 alt="Logo"
-                                className="w-16 h-16 rounded-full "
+                                className="w-16 h-16 rounded-full"
                             />
                         </div>
                         <div>
@@ -43,7 +43,7 @@ export default function Footer() {
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-10'>
                     <div className='flex flex-col items-center'>
                         <p className='text-[#a9abad] text-md'>Empowering businesses across Sri Lanka with innovative IT, IoT, and automation solutions for over a decade.</p>
-                        <div className="w-full flex  justify-start gap-8 mt-8">
+                        <div className="w-full flex  justify-center md:justify-start gap-8 mt-8">
                             <Facebook className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform" />
                             <Instagram className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform" />
                             <Linkedin className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform" />
@@ -51,8 +51,8 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className='flex flex-col items-center '>
-                        <div className='flex flex-col items-start px-4'>
+                    <div className='flex flex-col items-start mx-4 md:items-center md:mx-0 '>
+                        <div className='flex flex-col items-start px-4 '>
                             <h2 className="text-white text-lg font-bold mb-2">Service</h2>
                             <ul className="text-[#a9abad] text-sm">
                                 <li className="mb-1 text-base">Electronic & Networking</li>
@@ -64,7 +64,7 @@ export default function Footer() {
 
                     </div>
                     <div className='flex flex-col items-center'>
-                        <div className='flex flex-col items-start px-4'>
+                        <div className='flex flex-col items-start   px-4'>
                             <h2 className="text-white text-lg font-bold mb-2">Contact</h2>
                             <ul className="text-[#a9abad] text-sm space-y-2">
                                 <li className="flex items-center gap-2 text-base">
