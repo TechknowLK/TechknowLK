@@ -10,13 +10,11 @@ import TeamSection from '../components/AboutUs/TeamSection'
 export const AboutUs = () => {
   return (
    <div className='relative w-full bg-[#F5F5F5]'>
-       <NavBar/>
        <HeroSection/>
        <OurStorySection/>
        <VMSection/>
        <OtherSection1/>
        <TeamSection/>
-       <Footer/>
     </div>
   )
 }
