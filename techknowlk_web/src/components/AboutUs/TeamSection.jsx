@@ -31,17 +31,17 @@ export default function TeamSection() {
                             role="Backend Developer"
                             experience="4+ years in Software Development"
                             description="Specializes in building robust server-side applications and APIs."
-                            image={ravishkaImg}
+                            image={vihangaImg}
                             bgColor="#33A1E0"
                         />
 
                     {/* Team Member 3 */}
                         <MemberCard
-                            name="Ravishka Inderji"
+                            name="Ravishka Indraji"
                             role="Fullstack Developer"
                             experience="4+ years in Software Development"
                             description="Expert in both frontend and backend development, delivering end-to-end solutions."
-                            image={vihangaImg}
+                            image={ravishkaImg}
                             bgColor="#33A1E0"
                         />
                         <MemberCard
