@@ -2,24 +2,21 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "M.K. Abeykoon",
-    role: "Managing Director",
-    company: "Enterprise Solutions Ltd.",
-    text: "TechKnow Lanka transformed our operations with their IoT solutions. The team's expertise increased our operational efficiency by 45% and their support has been exceptional.",
+    name: "Kumara Alahakoon",
+    company: "Alahakoon Enterprises",
+    text: "TechKnow Lanka completely revolutionized how we manage our interlock operations. Their customized system streamlined our workflow and improved accuracy across every department. The support team was with us every step of the way.",
+    rating: 4
+  },
+  {
+    name: "Milani Rathnayake",
+    company: "Ayusha Pharmacy",
+    text: "TechKnow Lanka’s Pharmacy Management System has completely optimized our daily operations. From inventory control to billing, everything runs smoothly now. Our workflow efficiency has increased by nearly 50%, and errors have dropped dramatically.",
     rating: 5
   },
   {
-    name: "M.K. Abeykoon",
-    role: "Technology Manager",
-    company: "Innovation Corp.",
-    text: "Their cybersecurity expertise helped us achieve compliance standards while maintaining seamless operations. Exceptional service and cutting-edge solutions.",
-    rating: 5
-  },
-  {
-    name: "M.K. Abeykoon",
-    role: "Operations Manager",
-    company: "Manufacturing Inc.",
-    text: "The smart home automation systems from TechKnow were ahead of the market. Our clients love the innovative technology and ease of use.",
+    name: "Prabath Athukorala",
+    company: "GCB Bank",
+    text: "Our financial verification and data collection process used to take days. With the system developed by TechKnow Lanka, it now takes minutes. Their attention to detail and commitment to excellence truly stand out.",
     rating: 5
   }
 ];
@@ -64,7 +61,7 @@ const Testimonials = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                  <p className="text-xs text-muted-foreground">{testimonial.company}</p>
                 </div>
               </div>
             </div>
