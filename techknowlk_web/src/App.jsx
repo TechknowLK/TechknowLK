@@ -8,10 +8,12 @@ import Blogs from './screens/Blogs';
 import Contact from './screens/Contact';
 import { NavBar } from './components/NavBar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 export const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
