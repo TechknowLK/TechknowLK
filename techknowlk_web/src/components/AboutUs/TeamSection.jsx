@@ -4,6 +4,7 @@ import MemberCard from './MemberCard'
 import supunImg from "../../assets/img/TeamImages/Supun.png";
 import ravishkaImg from "../../assets/img/TeamImages/Ravishka.png";
 import vihangaImg from "../../assets/img/TeamImages/Vihanga.png";
+import IsuruImg from "../../assets/img/TeamImages/Isuru.png";
 
 export default function TeamSection() {
     return (
@@ -19,7 +20,7 @@ export default function TeamSection() {
                         <MemberCard
                             name="Supun Sulakshana"
                             role="Frontend Developer"
-                            experience="12+ years in Software Development"
+                            experience="4+ years in Software Development"
                             description="Crafts responsive, high-performance user interfaces with a focus on accessibility and seamless user experience."
                             image={supunImg}
                             bgColor="#33A1E0"
@@ -28,7 +29,7 @@ export default function TeamSection() {
                         <MemberCard
                             name="Vihaga Heshan"
                             role="Backend Developer"
-                            experience="10+ years in Software Development"
+                            experience="4+ years in Software Development"
                             description="Specializes in building robust server-side applications and APIs."
                             image={ravishkaImg}
                             bgColor="#33A1E0"
@@ -38,8 +39,44 @@ export default function TeamSection() {
                         <MemberCard
                             name="Ravishka Inderji"
                             role="Fullstack Developer"
-                            experience="8+ years in Software Development"
+                            experience="4+ years in Software Development"
                             description="Expert in both frontend and backend development, delivering end-to-end solutions."
+                            image={vihangaImg}
+                            bgColor="#33A1E0"
+                        />
+                        <MemberCard
+                            name="Lakshan Vlogs"
+                            role="Frontend Developer"
+                            experience="4+ years in Software Development"
+                            description="Expert in both frontend and backend development, delivering end-to-end solutions."
+                            image={vihangaImg}
+                            bgColor="#33A1E0"
+                        />
+
+
+                        <MemberCard
+                            name="Isuru Savindya"
+                            role="Director (Technical)"
+                            experience="5+ years in Electronic and Networking"
+                            description="Leads the technical vision and strategy, ensuring cutting-edge solutions."
+                            image={IsuruImg}
+                            bgColor="#33A1E0"
+                        />
+
+                        <MemberCard
+                            name="Lalith Pathmakumara"
+                            role="Director (Human Resources)"
+                            experience="25+ years in Human Resource Management"
+                            description="Oversees talent acquisition and employee development, fostering a positive workplace culture."
+                            image={vihangaImg}
+                            bgColor="#33A1E0"
+                        />
+
+                        <MemberCard
+                            name="Nandana Athauda"
+                            role="Director (Accounting)"
+                            experience="25+ years in Accounting and Finance"
+                            description="Manages financial planning, reporting, and compliance to drive organizational success."
                             image={vihangaImg}
                             bgColor="#33A1E0"
                         />
