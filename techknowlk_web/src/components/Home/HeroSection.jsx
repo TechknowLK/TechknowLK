@@ -1,11 +1,14 @@
 import React from "react";
+import { useState, Suspense } from "react";
 import PropTypes from "prop-types";
 import video from "../../assets/Video/Hero.mp4";
 import { TypeAnimation } from "react-type-animation";
 import Button01 from "../Button01";
 import Spline from "@splinetool/react-spline";
 import Button02 from "../Button02";
-// import { motion } from "framer-motion";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Stage } from "@react-three/drei";
+import Robo from "./Robo";
 
 const HeroSection = () => {
   {
@@ -56,12 +59,18 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className=" hidden lg:block relative w-full h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
-            <div className="absolute inset-0rounded-3xl blur-2xl" />
-            <div className="relative h-full rounded-3xl overflow-hidden bg-white/5 border border-white/10">
-            
-
-              <Spline scene="https://prod.spline.design/mICLHptOtlmEe0Zh/scene.splinecode" />
+          <div className="hidden lg:block relative w-1/2  h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
+            <div className="relative h-full  overflow-hidden ">
+              <Canvas camera={{ position: [3, 0, 7], fov: 25 }}>
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[10, 12, 5]} intensity={9} />
+                <Suspense fallback={null}>
+                  <Stage environment="city" intensity={0.6}>
+                    <Robo scale={1} />
+                  </Stage>
+                </Suspense>
+                <OrbitControls enableZoom={false} />
+              </Canvas>
             </div>
           </div>
 
