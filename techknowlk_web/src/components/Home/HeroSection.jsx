@@ -56,7 +56,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="relative w-full h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
+          <div className=" hidden lg:block relative w-full h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
             <div className="absolute inset-0rounded-3xl blur-2xl" />
             <div className="relative h-full rounded-3xl overflow-hidden bg-white/5 border border-white/10">
             
