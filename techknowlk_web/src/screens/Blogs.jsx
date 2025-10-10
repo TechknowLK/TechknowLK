@@ -7,10 +7,10 @@ import BlogHeroSection from '../components/Blogs/BlogHeroSection'
 export default function Blogs() {
   return (
     <div>
-        <NavBar/>
+       
         <BlogHeroSection/>
         <Blog/>
-        <Footer/>
+        
     </div>
   )
 }

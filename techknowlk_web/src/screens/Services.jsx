@@ -7,10 +7,8 @@ import Footer from '../components/Footer'
 export default function Services() {
   return (
     <div className='relative w-full bg-[#F5F5F5]'>
-        <NavBar/>
         <HeroSection/>
         <ServiceSection/>
-        <Footer/>
     </div>
   )
 }

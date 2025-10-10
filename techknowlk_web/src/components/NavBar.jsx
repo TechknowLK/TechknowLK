@@ -17,7 +17,7 @@ export const NavBar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#012A3A]/90 backdrop-blur-md shadow-md transition-all duration-300">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-3">
+      <div className="w-full mx-auto flex items-center justify-between px-6 md:px-[5%] py-3">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
           <img

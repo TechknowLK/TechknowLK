@@ -6,10 +6,13 @@ import Services from './screens/Services';
 import Products from './screens/Products';
 import Blogs from './screens/Blogs';
 import Contact from './screens/Contact';
+import { NavBar } from './components/NavBar';
+import Footer from './components/Footer';
 
 export const App = () => {
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<AboutUs />} />
@@ -18,6 +21,7 @@ export const App = () => {
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/contact' element={<Contact />} />
       </Routes>
+      <Footer/>
     </Router>
   )
 }
