@@ -7,10 +7,10 @@ import ShowProducts from '../components/OurProduct/ShowProducts'
 export default function Products() {
   return (
     <div>
-        <NavBar/>
+        
         <HeroSection/>
         <ShowProducts/>
-        <Footer/>
+        
     </div>
   )
 }

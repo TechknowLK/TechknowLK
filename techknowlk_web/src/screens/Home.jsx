@@ -10,13 +10,13 @@ import Footer from '../components/Footer'
 export const Home = () => {
   return (
     <div className='relative w-full'>
-       <NavBar/>
+      
        <HeroSection/>
        <ServiceSection/>
        <WhyChoose/>
        <StartProject/>
        <Testimonials/>
-       <Footer/>
+       
     </div>
   )
 }
