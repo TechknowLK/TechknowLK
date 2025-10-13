@@ -1,31 +1,68 @@
 // Robo.js
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { Vector3 } from "three";
+import { Vector3, MathUtils } from "three";
 
 export default function Robo(props) {
-  const { nodes, materials } = useGLTF("/public/model/robo.gltf");
+  const { nodes, materials } = useGLTF("/model/robo.gltf");
   const headRef = useRef();
-  const { viewport, camera } = useThree();
+  const targetRef = useRef(new Vector3(0, 6.5, 1));
+  const currentLookAt = useRef(new Vector3(0, 6.5, 1));
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isInitialized, setIsInitialized] = useState(false);
+  const { camera, size } = useThree();
 
-  const target = new Vector3();
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      // Simple and clear coordinate mapping
+      const x = (event.clientX / window.innerWidth) * 2 - 1;  // Left = -1, Right = +1
+      const y = (event.clientY / window.innerHeight) * 2 - 1; // Top = -1, Bottom = +1
+      
+      setMousePosition({ x, y });
+    };
 
-  useFrame(({ mouse }) => {
+    // Add global mouse move listener
+    window.addEventListener('mousemove', handleMouseMove);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  useFrame(() => {
     if (!headRef.current) return;
 
-    // Map mouse (-1 to 1) to world coordinates in front of camera
-    target.x = mouse.x * viewport.width * 0.5;
-    target.y = mouse.y * viewport.height * 0.5;
-    target.z = 1; // a little in front of the head
+    // Initialize head to look extremely up at us on first render
+    if (!isInitialized) {
+      headRef.current.lookAt(0, 6.5, 1);
+      setIsInitialized(true);
+      return;
+    }
 
-    // Smooth lookAt using rotation interpolation
-    headRef.current.lookAt(target);
+    // Convert 2D mouse position to 3D world position with better accuracy
+    // Create a target point in front of the robot head for it to look at
+    
+    // Simple and accurate full screen cursor tracking
+    const baseY = 6.5;  // Keep the upward-looking base position
+    const targetX = mousePosition.x * 3.0;                    // Left (-) to Right (+) movement
+    const targetY = baseY - (mousePosition.y * 2.0);         // Top (+) makes robot look up, Bottom (-) makes robot look down
+    const targetZ = 2.0;                                      // Slightly further for better tracking
+    
+    // Set target position
+    targetRef.current.set(targetX, targetY, targetZ);
+    
+    // Balanced interpolation for smooth and accurate tracking
+    currentLookAt.current.lerp(targetRef.current, 0.2);
+    
+    // Make the head look at the interpolated target
+    headRef.current.lookAt(currentLookAt.current);
   });
 
   return (
     <group {...props} dispose={null}>
-      <group position={[0, 0.24, 0.012]} rotation={[-Math.PI / 2, 0, 0]}>
+      <group position={[0, 0.16, 0.012]} rotation={[-Math.PI / 2, 0, 0]}>
         {/* Head + everything attached */}
         <group ref={headRef} position={[0, -0.001, 0.094]}>
           <mesh geometry={nodes.Head_Head_0.geometry} material={materials.Head} />
@@ -75,4 +112,4 @@ export default function Robo(props) {
   );
 }
 
-useGLTF.preload("/public/model/robo.gltf");
+useGLTF.preload("/model/robo.gltf");

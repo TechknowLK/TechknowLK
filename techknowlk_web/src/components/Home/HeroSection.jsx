@@ -61,7 +61,11 @@ const HeroSection = () => {
 
           <div className="hidden lg:block relative w-1/2  h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
             <div className="relative h-full  overflow-hidden ">
-              <Canvas camera={{ position: [3, 0, 7], fov: 25 }}>
+              <Canvas 
+                camera={{ position: [3, 0, 7], fov: 25 }}
+                resize={{ scroll: false, debounce: { scroll: 50, resize: 50 } }}
+                dpr={[1, 2]}
+              >
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 12, 5]} intensity={9} />
                 <Suspense fallback={null}>
@@ -69,7 +73,11 @@ const HeroSection = () => {
                     <Robo scale={1} />
                   </Stage>
                 </Suspense>
-                <OrbitControls enableZoom={false} />
+                <OrbitControls 
+                  enableZoom={false} 
+                  enablePan={false}
+                  enableRotate={true}
+                />
               </Canvas>
             </div>
           </div>
