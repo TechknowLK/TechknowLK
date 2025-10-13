@@ -11,7 +11,7 @@ export default function MemberCard({
     bgColor = "#33A1E0" 
 }) {
     return (
-        <div className="bg-card rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)] transition-all duration-500 hover:scale-105 px-10">
+        <div className="bg-card rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)] transition-all duration-500 hover:scale-105 px-10" data-aos="fade-up" data-aos-anchor-placement="start-center">
             <div className="flex flex-col items-center mb-4">
                 <div
                     className="relative w-30 h-32 shadow shadow-gray-700 mb-2 rounded-2xl overflow-visible flex justify-center items-end mt-10"
