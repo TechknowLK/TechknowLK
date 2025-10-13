@@ -55,13 +55,13 @@ const HeroSection = () => {
             </h4>
 
             <div className="flex flex-row gap-5">
-              <Button01 label={"Explore More"} />
+              <Button01 label={"Explore More"}  />
             </div>
           </div>
 
-          <div className="hidden lg:block relative w-1/2  h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
+          <div className="hidden lg:block relative lg:w-1/3 xl:w-1/2 h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
             <div className="relative h-full  overflow-hidden ">
-              <Canvas 
+              <Canvas
                 camera={{ position: [3, 0, 7], fov: 25 }}
                 resize={{ scroll: false, debounce: { scroll: 50, resize: 50 } }}
                 dpr={[1, 2]}
@@ -73,10 +73,12 @@ const HeroSection = () => {
                     <Robo scale={1} />
                   </Stage>
                 </Suspense>
-                <OrbitControls 
-                  enableZoom={false} 
+                <OrbitControls
+                  enableZoom={false}
                   enablePan={false}
                   enableRotate={true}
+                  minPolarAngle={Math.PI / 2}
+                  maxPolarAngle={Math.PI / 2}
                 />
               </Canvas>
             </div>

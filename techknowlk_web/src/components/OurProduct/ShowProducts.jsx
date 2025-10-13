@@ -25,7 +25,7 @@ const projects = [
       "Custom ERP solution integrating inventory management, sales tracking, and financial reporting with real-time analytics.",
     image: projectInventory,
     technologies: ["JavaFX", "Java", "MySQL"],
-    category: "Electronic & Networking",
+    category: "Electrical & Networking",
   },
   {
     id: 2,
@@ -61,7 +61,7 @@ const projects = [
       "Advanced networking solution with monitoring capabilities, security protocols, and bandwidth management features.",
     image: projectNetwork,
     technologies: ["Python", "React", "PostgreSQL"],
-    category: "Electronic & Networking",
+    category: "Electrical & Networking",
   },
   {
     id: 6,
@@ -79,7 +79,7 @@ const projects = [
       "Scalable cloud computing solution with automated deployment, load balancing, and disaster recovery systems.",
     image: projectCloud,
     technologies: ["AWS", "Docker", "Kubernetes"],
-    category: "Electronic & Networking",
+    category: "Electrical & Networking",
   },
   {
     id: 8,
@@ -129,7 +129,7 @@ const projects = [
 ];
 
 const categories = [
-  "Electronic & Networking",
+  "Electrical & Networking",
   "Software Solutions",
   "IoT & Automation",
 ];
@@ -179,7 +179,7 @@ const Index = () => {
       <hr className=" border-gray-300 mb-6 mx-10" />
 
       <section className="container mx-auto px-10 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}

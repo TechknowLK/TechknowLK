@@ -26,13 +26,13 @@ export default function ServiceSection() {
             px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mx-auto mb-12"
         >
           <ServiceCard
-            title="Electronics & Networking"
-            description="Professional network infrastructure, hardware solutions, and system integration for optimal business connectivity."
+            title="Electrical & Networking"
+            description="Professional electrical installations, network infrastructure setup, and maintenance services to ensure seamless connectivity."
             icon={<Cpu size={42} color="white" />}
             bulletPoints={[
-              "Network Design",
-              "Hardware Setup",
-              "System Integration",
+             "Electrical Installations",
+              "Network Setup",
+              "Maintenance Services",
             ]}
           />
 
