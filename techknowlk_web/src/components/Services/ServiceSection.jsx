@@ -18,8 +18,8 @@ import Button01 from "../Button01";
 
 const services = [
   {
-    title: "Electronics & Networking",
-    description: "Comprehensive network infrastructure solutions for modern businesses.",
+    title: "Electrical & Networking",
+    description: "Robust electrical and networking solutions to keep your business connected and secure.",
     features: [
       { icon: Network, text: "Network Design & Implementation" },
       { icon: ServerCog, text: "System Integration Services" },
