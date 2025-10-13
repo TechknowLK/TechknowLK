@@ -8,7 +8,7 @@ const testimonials = [
     rating: 4
   },
   {
-    name: "Milani Rathnayake",
+    name: "Milani Wijewardhana",
     company: "Ayusha Pharmacy",
     text: "TechKnow Lanka’s Pharmacy Management System has completely optimized our daily operations. From inventory control to billing, everything runs smoothly now. Our workflow efficiency has increased by nearly 50%, and errors have dropped dramatically.",
     rating: 5
