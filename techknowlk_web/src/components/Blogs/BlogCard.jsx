@@ -27,10 +27,10 @@ const BlogCard = ({ title, excerpt, category, date, image, slug }) => {
           <Calendar className="w-4 h-4" />
           <span>{date}</span>
         </div>
-        <h3 className="text-xl font-semibold mb-3 text-card-foreground group-hover:text-accent transition-colors">
+        <h3 className="text-xl font-semibold mb-3 text-[#626262] text-card-foreground group-hover:text-accent transition-colors">
           {title}
         </h3>
-        <p className="text-muted-foreground line-clamp-3">{excerpt}</p>
+        <p className="text-muted-foreground line-clamp-3 text-[#626262]">{excerpt}</p>
       </div>
 
       {/* Button Section */}

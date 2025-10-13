@@ -1,5 +1,10 @@
 @import "tailwindcss";
-html, body,#root {
+
+/* Apply Poppins font globally */
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body, #root {
   overflow-x: hidden;
-  
 }

@@ -22,6 +22,7 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+
   return (
     <section className="py-20 bg-[#F5F5F5]">
       <div className="container mx-auto px-4">
@@ -40,7 +41,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card  rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)]   transition-all duration-500 hover:scale-105 px-10"
+              className="bg-card  rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)]   transition-all duration-500 px-10"
             >
               
               <div className="flex gap-1 mb-4">
