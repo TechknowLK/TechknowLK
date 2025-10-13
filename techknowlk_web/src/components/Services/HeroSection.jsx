@@ -40,12 +40,12 @@ export default function HeroSection() {
   
         {/* content */}
         <div className="relative z-10 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-sm">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-sm" data-aos="fade-down" data-aos-duration="1000">
             <span className="text-white">Our </span>
             <span className="text-[#33A1E0]">Services</span>
           </h1>
   
-          <p className="mt-6 text-lg md:text-xl text-gray-200/90 font-light leading-relaxed max-w-3xl mx-auto">
+          <p className="mt-6 text-lg md:text-xl text-gray-200/90 font-light leading-relaxed max-w-3xl mx-auto" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500">
             Comprehensive technology solutions designed to transform your business operations and drive sustainable growth.
           </p>
         </div>
