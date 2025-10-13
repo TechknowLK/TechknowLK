@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // modern icons
-import logo from "../assets/img/logo.png";
+import logo from "../assets/img/logo02.png";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ export const NavBar = () => {
           <img
             src={logo}
             alt="Logo"
-            className="w-12 h-12 rounded-full border border-[#33A1E0]/40"
+            className="w-12 h-12 rounded-full   scale-150"
           />
           <span className="text-white font-bold text-xl tracking-wide">
             Techknow<span className="text-[#33A1E0]">LK</span>

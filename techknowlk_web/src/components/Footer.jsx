@@ -51,11 +51,11 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className='flex flex-col items-start mx-4 md:items-center md:mx-0 '>
-                        <div className='flex flex-col items-start px-4 '>
+                    <div className='flex flex-col items-start md:items-center '>
+                        <div className='flex flex-col items-start  md:px-4 '>
                             <h2 className="text-white text-lg font-bold mb-2">Service</h2>
                             <ul className="text-[#a9abad] text-sm">
-                                <li className="mb-1 text-base">Electronic & Networking</li>
+                                <li className="mb-1 text-base">Electrical & Networking</li>
                                 <li className="mb-1 text-base">Software Solutions</li>
                                 <li className="mb-1 text-base">IoT & Automation</li>
                                 <li className="mb-1 text-base">IT Consultation</li>
@@ -63,8 +63,8 @@ export default function Footer() {
                         </div>
 
                     </div>
-                    <div className='flex flex-col items-center'>
-                        <div className='flex flex-col items-start   px-4'>
+                    <div className='flex flex-col items-start  md:items-center '>
+                        <div className='flex flex-col items-start md:px-4'>
                             <h2 className="text-white text-lg font-bold mb-2">Contact</h2>
                             <ul className="text-[#a9abad] text-sm space-y-2">
                                 <li className="flex items-center gap-2 text-base">

@@ -35,7 +35,7 @@ export default function SendMessageSection() {
           </Label>
           <Input
             id="name"
-            placeholder="John Doe"
+            placeholder="Enter your full name"
             {...register("name", { required: "Full name is required" })}
           />
           {errors.name && (
@@ -51,7 +51,7 @@ export default function SendMessageSection() {
           <Input
             id="email"
             type="email"
-            placeholder="john@example.com"
+            placeholder="name@example.com"
             {...register("email", { required: "Email is required" })}
           />
           {errors.email && (
