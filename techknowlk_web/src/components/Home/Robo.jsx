@@ -7,8 +7,8 @@ import { Vector3, MathUtils } from "three";
 export default function Robo(props) {
   const { nodes, materials } = useGLTF("/model/robo.gltf");
   const headRef = useRef();
-  const targetRef = useRef(new Vector3(0, 6.5, 1));
-  const currentLookAt = useRef(new Vector3(0, 6.5, 1));
+  const targetRef = useRef(new Vector3(0, 6.0, 1));
+  const currentLookAt = useRef(new Vector3(0, 6.0, 1));
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isInitialized, setIsInitialized] = useState(false);
   const { camera, size } = useThree();
@@ -34,9 +34,9 @@ export default function Robo(props) {
   useFrame(() => {
     if (!headRef.current) return;
 
-    // Initialize head to look extremely up at us on first render
+    // Initialize head to look more up at us on first render
     if (!isInitialized) {
-      headRef.current.lookAt(0, 6.5, 1);
+      headRef.current.lookAt(0, 6.0, 1);
       setIsInitialized(true);
       return;
     }
@@ -45,9 +45,9 @@ export default function Robo(props) {
     // Create a target point in front of the robot head for it to look at
     
     // Simple and accurate full screen cursor tracking
-    const baseY = 6.5;  // Keep the upward-looking base position
+    const baseY = 6.0;  // Slightly raised the upward-looking base position
     const targetX = mousePosition.x * 3.0;                    // Left (-) to Right (+) movement
-    const targetY = baseY - (mousePosition.y * 2.0);         // Top (+) makes robot look up, Bottom (-) makes robot look down
+    const targetY = baseY - (mousePosition.y * 2.0);         // Corrected: Top (-1) makes robot look up, Bottom (+1) makes robot look down
     const targetZ = 2.0;                                      // Slightly further for better tracking
     
     // Set target position
