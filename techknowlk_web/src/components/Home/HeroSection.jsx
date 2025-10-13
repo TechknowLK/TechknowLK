@@ -55,7 +55,7 @@ const HeroSection = () => {
             </h4>
 
             <div className="flex flex-row gap-5">
-              <Button01 label={"Explore More"} />
+              <Button01 label={"Explore More"}  />
             </div>
           </div>
 
