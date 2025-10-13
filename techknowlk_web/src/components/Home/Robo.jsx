@@ -45,9 +45,9 @@ export default function Robo(props) {
     // Create a target point in front of the robot head for it to look at
     
     // Simple and accurate full screen cursor tracking
-    const baseY = 6.0;  // Slightly raised the upward-looking base position
+    const baseY = 8.0;  // Raised the upward-looking base position for more upward tilt
     const targetX = mousePosition.x * 3.0;                    // Left (-) to Right (+) movement
-    const targetY = baseY - (mousePosition.y * 2.0);         // Corrected: Top (-1) makes robot look up, Bottom (+1) makes robot look down
+    const targetY = baseY - (mousePosition.y * 4.0);         // Increased range: Top (-1) makes robot look up, Bottom (+1) makes robot look down
     const targetZ = 2.0;                                      // Slightly further for better tracking
     
     // Set target position
