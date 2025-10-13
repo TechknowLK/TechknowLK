@@ -59,7 +59,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="hidden lg:block relative w-1/2  h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
+          <div className="hidden lg:block relative lg:w-1/3 xl:w-1/2 h-[500px] animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
             <div className="relative h-full  overflow-hidden ">
               <Canvas 
                 camera={{ position: [3, 0, 7], fov: 25 }}
