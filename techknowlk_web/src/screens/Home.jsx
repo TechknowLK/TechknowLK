@@ -6,6 +6,7 @@ import WhyChoose from '../components/Home/WhyChooseUsSection'
 import Testimonials from '../components/Home/TestimonialsSection'
 import StartProject from '../components/Home/StartProjectSection'
 import Footer from '../components/Footer'
+import NotFound from './NotfoundPage'
 
 export const Home = () => {
   return (

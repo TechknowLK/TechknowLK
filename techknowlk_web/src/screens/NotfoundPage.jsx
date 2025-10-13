@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Home, ArrowLeft } from "lucide-react";
 import Button01 from "../components/Button01";
+import Button02 from "../components/Button02";
 
 const NotFound = () => {
   const location = useLocation();
@@ -19,12 +20,12 @@ const NotFound = () => {
       
       <div className="relative z-10 text-center px-4 max-w-2xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-[150px] md:text-[200px] font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent leading-none">
+          <h1 className="text-[150px] md:text-[200px] font-bold text-[#626262] bg-clip-text leading-none">
             404
           </h1>
         </div>
         
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold  mb-4">
           Page Not Found
         </h2>
         
@@ -33,17 +34,17 @@ const NotFound = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button01 asChild size="lg" className="gap-2">
+          <Button01 label={"Go to Home"} asChild size="lg" className="gap-2">
             <Link to="/">
               Go to Home
             </Link>
           </Button01>
-          
-          <Button01 asChild variant="outline" size="lg" className="gap-2">
+
+          <Button02 label={"Go Back"} asChild variant="outline" size="lg" className="gap-2">
             <Link to="javascript:history.back()">
-              Go Back
+              
             </Link>
-          </Button01>
+          </Button02>
         </div>
       </div>
     </div>
