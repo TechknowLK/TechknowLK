@@ -22,8 +22,8 @@ export default function SendMessageSection() {
   };
 
   return (
-    <section className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg w-full mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-[#626262]">
+    <section className="bg-white border border-gray-200 rounded-2xl p-4 md:p-8 shadow-lg w-full mx-auto">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 text-[#626262]">
         Send us a Message
       </h2>
 
@@ -82,7 +82,7 @@ export default function SendMessageSection() {
           <select
             id="service"
             {...register("service", { required: "Please select a service" })}
-            className="mt-2 w-full h-10 border border-gray-300 rounded-md px-3 text-sm focus:ring-2 focus:ring-[#34A7D5] focus:outline-none"
+            className="mt-2 w-full py-4 border border-gray-300 rounded-md px-3 text-sm focus:ring-2 focus:ring-[#34A7D5] focus:outline-none"
           >
             <option value="">Select a service</option>
             <option value="electrical">Eelectrical & Networking</option>
