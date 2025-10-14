@@ -20,12 +20,12 @@ export default function MapSection() {
 
     return (
         <div className="w-full h-auto">
-             <div className="w-full rounded-2xl h-[600px] bg-[#dee9ee] overflow-hidden">
+             <div className="w-full rounded-2xl  h-[450px] bg-[#dee9ee] overflow-hidden">
                 <MapContainer
                     center={position}
                     zoom={14}
                     scrollWheelZoom={false}
-                    style={{ height: "100%", width: "100%" }}
+                    style={{ height: "100%", width: "100%" , zIndex:0 }}
                 >
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -38,7 +38,7 @@ export default function MapSection() {
                     </Marker>
                 </MapContainer>
             </div>
-            <div className="w-full h-auto py-10 ">
+            <div className="w-full h-auto mt-10 ">
                 <div className="bg-[#dee9ee]/60 rounded-2xl shadow-lg border border-[#c5e0f2]/50 p-8 text-center transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
 
                     {/* Header */}

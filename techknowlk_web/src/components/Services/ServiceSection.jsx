@@ -21,7 +21,7 @@ const services = [
     title: "Electrical & Networking",
     description: "Robust electrical and networking solutions to keep your business connected and secure.",
     features: [
-      { icon: Network, text: "Network Design & Implementation" },
+      { icon: Network, text: "Network Design & Implementation " },
       { icon: ServerCog, text: "System Integration Services" },
       { icon: ShieldCheck, text: "Security Implementation" },
       { icon: Wrench, text: "Maintenance & Support" },
@@ -82,7 +82,7 @@ export default function ServiceSection() {
             }`}
           >
             {/* Left Content */}
-            <div className="flex flex-col gap-4 flex-1">
+            <div className="flex flex-col gap-4 flex-1 ">
               <div className="flex flex-row items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-[#33A1E0] flex items-center justify-center shadow-[0_0_20px_rgba(51,161,224,0.4)]">
                   {FirstIcon && <FirstIcon className="text-white w-6 h-6" />}

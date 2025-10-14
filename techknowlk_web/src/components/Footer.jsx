@@ -69,7 +69,7 @@ export default function Footer() {
                             <ul className="text-[#a9abad] text-sm space-y-2">
                                 <li className="flex items-center gap-2 text-base">
                                     <Mail className="w-5 h-5 text-[#a9abad]" />
-                                    <span>info@techknowlanka.com</span>
+                                    <span>techknowlkinfo@gmail.com</span>
                                 </li>
                                 <li className="flex items-center gap-2 text-base">
                                     <PhoneCall className="w-5 h-5 text-[#a9abad]" />

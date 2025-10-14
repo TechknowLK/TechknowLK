@@ -85,7 +85,7 @@ export default function SendMessageSection() {
             className="mt-2 w-full h-10 border border-gray-300 rounded-md px-3 text-sm focus:ring-2 focus:ring-[#34A7D5] focus:outline-none"
           >
             <option value="">Select a service</option>
-            <option value="electronics">Electronics & Networking</option>
+            <option value="electrical">Eelectrical & Networking</option>
             <option value="software">Software Solutions</option>
             <option value="iot">IoT & Automation</option>
             <option value="consulting">IT Support & Consulting</option>

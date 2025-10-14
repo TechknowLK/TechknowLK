@@ -6,7 +6,7 @@ export default function ContactInfoCard({ icon, contact, info }) {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl  bg-[#dee9ee]  mb-6">
                 {icon}
             </div>
-            <h4 className="text-base font-bold mb-3 whitespace-pre-line md:text-lg text-[#626262] ">
+            <h4 className="text-base font-bold mb-3 lg:whitespace-pre-line md:text-lg text-[#626262] overflow-hidden text-ellipsis whitespace-nowrap">
                 {contact}
             </h4>
             <p className="text-muted-foreground text-sm leading-relaxed text-[#626262]">
