@@ -14,7 +14,7 @@ export default function Contact() {
           <span className="text-[#626262]">Contact </span>
           <span className="text-[#33A1E0]">Information</span>
         </h1>
-        <div className='w-full px-10 grid grid-cols-1 md:grid-cols-3 gap-8  py-10 '>
+        <div className='w-full px-5 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-8  py-10 '>
           <ContactInfoCard
             icon={<Mail className="w-8 h-8 text-[#33A1E0]" />}
             contact="techknowlkinfo@gmail.com"
@@ -37,7 +37,7 @@ export default function Contact() {
 
 
 
-      <div className='w-full grid grid-cols-1 md:grid-cols-2 p-10 gap-10'>
+      <div className='w-full grid grid-cols-1 md:grid-cols-2 p-5 md:p-10 gap-10'>
         <SendMessageSection />
         <MapSection />
       </div>
