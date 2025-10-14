@@ -11,8 +11,8 @@ export default function MemberCard({
     bgColor = "#33A1E0" 
 }) {
     return (
-        <div className="bg-card rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)] transition-all duration-1000 hover:scale-105 px-10" data-aos="fade-up" data-aos-anchor-placement="start-center">
-            <div className="flex flex-col items-center mb-4">
+        <div className=" bg-card rounded-lg h-[400px] shadow-[10px_10px_25px_rgba(0,0,0,0.13)] transition-all duration-1000 hover:scale-105 px-10" data-aos="fade-up" data-aos-anchor-placement="start-center">
+            <div className=" h-full flex flex-col items-center mb-4">
                 <div
                     className="relative w-30 h-32 shadow shadow-gray-700 mb-2 rounded-2xl overflow-visible flex justify-center items-end mt-10"
                     style={{ backgroundColor: bgColor }}
@@ -31,7 +31,8 @@ export default function MemberCard({
                     {role}
                 </p>
                 <p className="font-normal mb-6 text-sm text-foreground">{experience}</p>
-                <p className="font-normal text-[#626262] text-foreground">{description}</p>
+               <p className="font-normal text-[#626262] text-foreground line-clamp-3">{description}</p>
+
             </div>
 
             <div className="flex items-center gap-3">

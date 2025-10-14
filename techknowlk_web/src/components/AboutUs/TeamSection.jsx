@@ -1,12 +1,97 @@
-import React from 'react'
+// import React from 'react'
 import MemberCard from './MemberCard'
 
 import supunImg from "../../assets/img/TeamImages/Supun.png";
 import ravishkaImg from "../../assets/img/TeamImages/Ravishka.png";
 import vihangaImg from "../../assets/img/TeamImages/Vihanga.png";
 import IsuruImg from "../../assets/img/TeamImages/Isuru.png";
+import LalithImg from "../../assets/img/TeamImages/Lalith.png";
+import TeamCarousel from './TeamCarousel';
+import DirectorCarousel from './DirectorCarousel';
+
+
 
 export default function TeamSection() {
+
+    const directors = [
+        {
+            id: 1,
+            name: "Isuru Savindya",
+            role: "Chief Technology Officer",
+            experience: "5+ years in IoT and Embedded Systems",
+            description:
+                "Leading innovative projects and driving strategic growth at Techknow Lanka.",
+            image: IsuruImg,
+            bgColor: "#6790a8",
+        },
+        {
+            id: 2,
+            name: "Lalith Pathmakumara",
+            role: "Chief Executive Officer",
+            experience: "35+ years administrative and managerial experience",
+            description:
+                "Steering the company's vision and fostering a culture of excellence.",
+            image: LalithImg,
+            bgColor: "#6790a8",
+        },
+        {
+            id: 3,
+            name: "Nandana Athauda",
+            role: "Chief Financial Officer",
+            experience: "20+ years in corporate finance and investments",
+            description:
+                "Ensures fiscal excellence and strategic allocation of resources.",
+            image: ravishkaImg,
+            bgColor: "#6790a8",
+        },
+    ];
+
+
+    const members = [
+        {
+            id: 1,
+            name: "Supun Sulakshana",
+            role: "Software Engineer",
+            experience: "4+ years in Software Engineering",
+            description:
+                "Focused on modern web apps, building smooth, scalable user experiences with React and Node.js.",
+            image: supunImg,
+            bgColor: "#33A1E0",
+        },
+        {
+            id: 2,
+            name: "Ravishka Perera",
+            role: "Software Engineer",
+            experience: "4+ years in Software Engineering ",
+            description:
+                "Designing intuitive and human-centered interfaces that elevate brand experiences.",
+            image: ravishkaImg,
+            bgColor: "#33A1E0",
+        },
+        {
+            id: 3,
+            name: "Vihanga Fernando",
+            role: "Software Engineer",
+            experience: "4+ years in Software Engineering",
+            description:
+                "Bridging communication between clients and devs, ensuring timely and quality delivery.",
+            image: vihangaImg,
+            bgColor: "#33A1E0",
+        },
+        {
+            id: 4,
+            name: "Lakshan Maduranga",
+            role: "Software Engineer",
+            experience: "4+ years in IoT and Embedded Systems",
+            description:
+                "Designing and optimizing smart electronic solutions for modern industries.",
+            image: IsuruImg,
+            bgColor: "#33A1E0",
+        },
+        
+    ];
+
+
     return (
         <div className='w-full relative flex flex-col py-16'>
             <div className='w-full p-4 flex flex-col items-center '>
@@ -15,72 +100,13 @@ export default function TeamSection() {
                     <span className="text-[#33A1E0]">Team</span>
                 </h1>
                 <p className='text-base lg:text-lg text-[#626262]'>Meet the visionary leaders driving innovation and excellence at Techknow Lanka.</p>
-                <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-10 px-10'>
-                    {/* Team Member 1 */}
-                        <MemberCard
-                            name="Supun Sulakshana"
-                            role="Frontend Developer"
-                            experience="4+ years in Software Development"
-                            description="Crafts responsive, high-performance user interfaces with a focus on accessibility and seamless user experience."
-                            image={supunImg}
-                            bgColor="#33A1E0"
-                        />
-                    {/* Team Member 2 */}
-                        <MemberCard
-                            name="Vihaga Heshan"
-                            role="Backend Developer"
-                            experience="4+ years in Software Development"
-                            description="Specializes in building robust server-side applications and APIs."
-                            image={vihangaImg}
-                            bgColor="#33A1E0"
-                        />
 
-                    {/* Team Member 3 */}
-                        <MemberCard
-                            name="Ravishka Indraji"
-                            role="Fullstack Developer"
-                            experience="4+ years in Software Development"
-                            description="Expert in both frontend and backend development, delivering end-to-end solutions."
-                            image={ravishkaImg}
-                            bgColor="#33A1E0"
-                        />
-                        <MemberCard
-                            name="Lakshan Vlogs"
-                            role="Frontend Developer"
-                            experience="4+ years in Software Development"
-                            description="Expert in both frontend and backend development, delivering end-to-end solutions."
-                            image={vihangaImg}
-                            bgColor="#33A1E0"
-                        />
+                <div className='w-full  '>
+                    <DirectorCarousel directors={directors} />
+                </div>
 
-
-                        <MemberCard
-                            name="Isuru Savindya"
-                            role="Director (Technical)"
-                            experience="5+ years in Electronic and Networking"
-                            description="Leads the technical vision and strategy, ensuring cutting-edge solutions."
-                            image={IsuruImg}
-                            bgColor="#33A1E0"
-                        />
-
-                        <MemberCard
-                            name="Lalith Pathmakumara"
-                            role="Director (Human Resources)"
-                            experience="25+ years in Human Resource Management"
-                            description="Oversees talent acquisition and employee development, fostering a positive workplace culture."
-                            image={vihangaImg}
-                            bgColor="#33A1E0"
-                        />
-
-                        <MemberCard
-                            name="Nandana Athauda"
-                            role="Director (Accounting)"
-                            experience="25+ years in Accounting and Finance"
-                            description="Manages financial planning, reporting, and compliance to drive organizational success."
-                            image={vihangaImg}
-                            bgColor="#33A1E0"
-                        />
-
+                <div className='w-full mt-5  '>
+                    <TeamCarousel members={members} />
                 </div>
             </div>
         </div>
