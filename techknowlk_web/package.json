@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.1.14",
     "aos": "^2.3.4",
     "clsx": "^2.1.1",
+    "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.545.0",

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // modern icons
-import logo from "../assets/img/logo02.png";
+import logo from "/assets/Img/logo02.png";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

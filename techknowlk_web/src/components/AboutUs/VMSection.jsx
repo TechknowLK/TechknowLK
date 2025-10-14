@@ -1,8 +1,8 @@
 import React from 'react'
 import VMCard from './VMCard'
 
-import VisionIcon from '../../assets/img/vision-icon.png'
-import MissionIcon from '../../assets/img/mission-icon.png'
+import VisionIcon from '/assets/Img/vision-icon.png'
+import MissionIcon from '/assets/Img/mission-icon.png'
 
 
 export default function VMSection() {

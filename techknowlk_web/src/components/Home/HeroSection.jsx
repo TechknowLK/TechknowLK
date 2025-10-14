@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, Suspense } from "react";
 import PropTypes from "prop-types";
-import video from "../../assets/Video/Hero.mp4";
+import video from "/assets/Video/Hero.mp4";
 import { TypeAnimation } from "react-type-animation";
 import Button01 from "../Button01";
 import Spline from "@splinetool/react-spline";

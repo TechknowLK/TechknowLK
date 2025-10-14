@@ -9,10 +9,10 @@ import {
   ServerCog,
 } from "lucide-react";
 
-import NetworkinOmage from "../../assets/img/Networking_image.png";
-import SoftwareImage from "../../assets/img/Software_image.png";
-import IotImage from "../../assets/img/Iot_image.png";
-import ConsultingImage from "../../assets/img/Cunsulting_image.png";
+import NetworkingImage from "/assets/Img/Networking_image.png";
+import SoftwareImage from "/assets/Img/Software_image.png";
+import IotImage from "/assets/Img/Iot_image.png";
+import ConsultingImage from "/assets/Img/Cunsulting_image.png";
 import Button01 from "../Button01";
 
 
@@ -27,7 +27,7 @@ const services = [
       { icon: Wrench, text: "Maintenance & Support" },
     ],
     technologies: ["Cisco", "Juniper", "HP Enterprise", "Dell Technologies"],
-    image: NetworkinOmage,
+    image: NetworkingImage,
   },
   {
     title: "Software Solutions",

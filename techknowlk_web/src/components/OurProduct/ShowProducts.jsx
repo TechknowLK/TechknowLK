@@ -3,18 +3,18 @@ import { ProjectCard } from "./ProductCard";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import projectNetwork from "../../assets/Img/Networking_image.png";
-import projectMobile from "../../assets/Img/Networking_image.png";
-import projectIot from "../../assets/Img/Networking_image.png";
-import projectPharmacy from "../../assets/Img/Networking_image.png";
-import projectInventory from "../../assets/Img/Networking_image.png";
-import projectCloud from "../../assets/Img/Networking_image.png";
-import projectCrm from "../../assets/Img/Networking_image.png";
-import projectEcommerce from "../../assets/Img/Networking_image.png";
-import projectSecurity from "../../assets/Img/Networking_image.png";
-import projectHealthcare from "../../assets/Img/Networking_image.png";
-import projectBanking from "../../assets/Img/Networking_image.png";
-import projectEducation from "../../assets/Img/Networking_image.png";
+import projectNetwork from "/assets/Img/Networking_image.png";
+import projectMobile from "/assets/Img/Networking_image.png";
+import projectIot from "/assets/Img/Networking_image.png";
+import projectPharmacy from "/assets/Img/Networking_image.png";
+import projectInventory from "/assets/Img/Networking_image.png";
+import projectCloud from "/assets/Img/Networking_image.png";
+import projectCrm from "/assets/Img/Networking_image.png";
+import projectEcommerce from "/assets/Img/Networking_image.png";
+import projectSecurity from "/assets/Img/Networking_image.png";
+import projectHealthcare from "/assets/Img/Networking_image.png";
+import projectBanking from "/assets/Img/Networking_image.png";
+import projectEducation from "/assets/Img/Networking_image.png";
 import Button03 from "../Button03";
 
 const projects = [

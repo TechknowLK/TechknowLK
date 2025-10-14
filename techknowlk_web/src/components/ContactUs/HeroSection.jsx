@@ -1,5 +1,5 @@
 import React from "react";
-import video from "../../assets/Video/Hero.mp4";
+import video from "/assets/Video/Hero.mp4";
 
 export default function HeroSection() {
   const bgStyle = {

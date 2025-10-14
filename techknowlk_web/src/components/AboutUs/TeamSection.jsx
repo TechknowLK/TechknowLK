@@ -1,11 +1,11 @@
 // import React from 'react'
 import MemberCard from './MemberCard'
 
-import supunImg from "../../assets/img/TeamImages/Supun.png";
-import ravishkaImg from "../../assets/img/TeamImages/Ravishka.png";
-import vihangaImg from "../../assets/img/TeamImages/Vihanga.png";
-import IsuruImg from "../../assets/img/TeamImages/Isuru.png";
-import LalithImg from "../../assets/img/TeamImages/Lalith.png";
+import supunImg from "/assets/Img/TeamImages/Supun.png";
+import ravishkaImg from "/assets/Img/TeamImages/Ravishka.png";
+import vihangaImg from "/assets/Img/TeamImages/Vihanga.png";
+import IsuruImg from "/assets/Img/TeamImages/Isuru.png";
+import LalithImg from "/assets/Img/TeamImages/Lalith.png";
 import TeamCarousel from './TeamCarousel';
 import DirectorCarousel from './DirectorCarousel';
 
