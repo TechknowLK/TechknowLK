@@ -25,12 +25,12 @@ const HeroSection = () => {
         </video>
         <div className=" min-h-screen relative z-10 flex flex-row items-center  justify-between px-5 md:px-14 bg-[#012A43]/50 text-white">
           <div className="flex flex-col gap-5">
-            <h1 className="text-lg text-gray-200/90 sm:text-lg md:text-lg lg:text-lg xl:text-xl  w-full md:w-3/4 ">
+            <h1 className=" text-gray-200/90 sm:text-sm md:text-lg lg:text-lg xl:text-xl  w-full md:w-3/4 ">
               Transforming Businesses with Smart Technology
             </h1>
 
-            <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold ">
-              <div className="h-[80px] sm:h-[100px] md:h-[120px] lg:h-[140px] xl:h-[150px] ">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold ">
+              <div className="h-[100px] sm:h-[100px] md:h-[120px] lg:h-[140px] xl:h-[150px] ">
                 <TypeAnimation
                   sequence={[
                     "Smart Solutions \n For every Business.",
@@ -48,7 +48,7 @@ const HeroSection = () => {
               </div>
             </h1>
 
-            <h4 className="text-lg sm:text-sm md:text-sm lg:text-lg xl:text-xl  w-full md:w-3/4 text-gray-200/90">
+            <h4 className=" sm:text-sm md:text-sm lg:text-lg xl:text-xl  w-full md:w-3/4 text-gray-200/90">
               Partner with Techknow Lanka to revolutionize your business
               operations with cutting-edge technology, seamless automation, and
               innovative IoT solutions.

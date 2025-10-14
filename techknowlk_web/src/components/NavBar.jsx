@@ -12,7 +12,7 @@ export const NavBar = () => {
     { name: "Service", path: "/services" },
     { name: "Product", path: "/products" },
     { name: "Blogs", path: "/blogs" },
-    { name: "Contact", path: "/contact" }
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -31,7 +31,7 @@ export const NavBar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <li key={link.name}>
               <NavLink
@@ -54,7 +54,7 @@ export const NavBar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white p-2 rounded-md hover:bg-white/10 transition"
+          className="lg:hidden text-white p-2 rounded-md hover:bg-white/10 transition"
         >
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -62,7 +62,7 @@ export const NavBar = () => {
 
       {/* Mobile Menu Dropdown */}
       <div
-        className={`md:hidden absolute top-[68px] left-0 w-full bg-[#012A3A]/95 backdrop-blur-md shadow-md transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden absolute top-[68px] left-0 w-full bg-[#012A3A]/95 backdrop-blur-md shadow-md transition-all duration-300 overflow-hidden ${
           menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
