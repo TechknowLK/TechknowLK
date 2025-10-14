@@ -8,6 +8,7 @@ export default function OurStorySection() {
     const images = [
         "/assets/Img/aboutusImg1.jpg",
         "/assets/Img/aboutusImg2.webp",
+        "/assets/Img/aboutusImg1.jpg",
 
     ];
 
@@ -29,7 +30,7 @@ export default function OurStorySection() {
                             Today, we continue to push boundaries, exploring new frontiers in AI, IoT, and automation while maintaining our core values of integrity, innovation, and client success.
                         </div>
                     </div>
-                    <div className="bg-[#626262]  rounded-lg" data-aos="fade-left">
+                    <div className=" flex rounded-lg" data-aos="fade-left">
                         <ImageCarousel images={images} />
                     </div>
                 </div>

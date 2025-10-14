@@ -88,7 +88,7 @@ export default function TeamSection() {
             image: IsuruImg,
             bgColor: "#33A1E0",
         },
-        
+
     ];
 
 
@@ -101,11 +101,38 @@ export default function TeamSection() {
                 </h1>
                 <p className='text-base lg:text-lg text-[#626262]'>Meet the visionary leaders driving innovation and excellence at Techknow Lanka.</p>
 
-                <div className='w-full  '>
+                <div className="w-full mt-10 md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+                    {directors.map((director) => (
+                        <MemberCard
+                            key={director.id}
+                            name={director.name}
+                            role={director.role}
+                            experience={director.experience}
+                            description={director.description}
+                            image={director.image}
+                            bgColor={director.bgColor}
+                        />
+                    ))}
+
+                    {members.map((member) => (
+                        <MemberCard
+                            key={member.id}
+                            name={member.name}
+                            role={member.role}
+                            experience={member.experience}
+                            description={member.description}
+                            image={member.image}
+                            bgColor={member.bgColor}
+                        />
+                    ))}
+                </div>
+
+
+                <div className='w-full lg:hidden md:hidden '>
                     <DirectorCarousel directors={directors} />
                 </div>
 
-                <div className='w-full mt-5  '>
+                <div className='w-full mt-5 md:hidden lg:hidden py-5'>
                     <TeamCarousel members={members} />
                 </div>
             </div>

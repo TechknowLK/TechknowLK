@@ -43,13 +43,13 @@ const TeamCarousel = ({ members }) => {
     }, [emblaApi, onSelect]);
 
     return (
-        <div className="relative w-full">
+        <div className="relative w-full ">
             <div className="overflow-hidden" ref={emblaRef}>
-                <div className="flex">
+                <div className="flex py-5 gap-5  ">
                     {members.map((member) => (
                         <div
                             key={member.id}
-                            className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]  "
+                            className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] "
                         >
                             <MemberCard
                                 name={member.name}
@@ -70,20 +70,20 @@ const TeamCarousel = ({ members }) => {
                 variant="outline"
                 size="icon"
                 onClick={scrollPrev}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 h-12 w-12 rounded-full bg-card shadow-lg border-2 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/60 text-white rounded-full p-2 transition-all"
                 aria-label="Previous slide"
             >
-                <ChevronLeft className="h-6 w-6" />
+                <ChevronLeft className="h-5 w-5" />
             </button>
 
             <button
                 variant="outline"
                 size="icon"
                 onClick={scrollNext}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 h-12 w-12 rounded-full bg-card shadow-lg border-2 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/60 text-white rounded-full p-2 transition-all"
                 aria-label="Next slide"
             >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-5 w-5" />
             </button>
 
             {/* Dots Navigation */}

@@ -65,7 +65,7 @@ const DirectorCarousel = ({ directors }) => {
             {/* Navigation Buttons */}
             <button
                 onClick={scrollPrev}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 h-12 w-12 rounded-full bg-card shadow-lg border-2 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/60 text-white rounded-full p-2 transition-all"
                 aria-label="Previous slide"
             >
                 <ChevronLeft className="h-6 w-6" />
@@ -73,7 +73,7 @@ const DirectorCarousel = ({ directors }) => {
 
             <button
                 onClick={scrollNext}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 h-12 w-12 rounded-full bg-card shadow-lg border-2 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/60 text-white rounded-full p-2 transition-all"
                 aria-label="Next slide"
             >
                 <ChevronRight className="h-6 w-6" />

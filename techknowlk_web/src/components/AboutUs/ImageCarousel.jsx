@@ -26,20 +26,20 @@ const ImageCarousel = ({ images }) => {
   }, [emblaApi]);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl shadow-lg" ref={emblaRef}>
-      <div className="flex">
+    <div className="relative  overflow-hidden rounded-2xl shadow-lg flex-grow" ref={emblaRef}>
+      <div className="flex w-full h-full ">
         {images.map((src, index) => (
           <div
             key={index}
-            className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] transition-all duration-700"
+            className="relative h-full  w-full flex-[0_0_100%] sm:flex-[0_0_100%] lg:flex-[0_0_100%] transition-all ease-in-out duration-700"
           >
             <img
               src={src}
               alt={`slide-${index}`}
-              className="w-full h-80 object-cover brightness-90 hover:brightness-100 transition-all duration-500"
+              className="w-full h-full  object-cover brightness-90 hover:brightness-100 transition-all duration-500"
             />
             {/* Auto fade shade overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            <div className="absolute w-full h-full inset-0 bg-black/20 pointer-events-none"></div>
           </div>
         ))}
       </div>
