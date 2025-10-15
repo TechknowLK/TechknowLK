@@ -7,8 +7,12 @@ import {
 } from "lucide-react";
 import ServiceCard from "./ServiceCard";
 import Button01 from "../Button01";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function ServiceSection() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="w-full relative bg-[#F5F5F5] justify-center text-center  overflow-hidden py-16">
@@ -74,7 +78,7 @@ export default function ServiceSection() {
           Ready to transform your business with our comprehensive solutions?
         </p>
         <div className="flex justify-center mt-6  ">
-          <Button01 label={"Get Started"} />
+          <Button01 label={"Get Started"} onClick={() => navigate("/services")} />
         </div>
       </div>
     </>

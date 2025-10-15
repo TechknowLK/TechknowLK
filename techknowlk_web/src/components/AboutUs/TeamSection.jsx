@@ -4,8 +4,10 @@ import MemberCard from './MemberCard'
 import supunImg from "/assets/Img/TeamImages/Supun.png";
 import ravishkaImg from "/assets/Img/TeamImages/Ravishka.png";
 import vihangaImg from "/assets/Img/TeamImages/Vihanga.png";
+import lakshanImg from "/assets/Img/TeamImages/Lakshan.png";
 import IsuruImg from "/assets/Img/TeamImages/Isuru.png";
 import LalithImg from "/assets/Img/TeamImages/Lalith.png";
+import NandanaImg from "/assets/Img/TeamImages/Nandana.png";
 import TeamCarousel from './TeamCarousel';
 import DirectorCarousel from './DirectorCarousel';
 
@@ -41,7 +43,7 @@ export default function TeamSection() {
             experience: "20+ years in corporate finance and investments",
             description:
                 "Ensures fiscal excellence and strategic allocation of resources.",
-            image: ravishkaImg,
+            image: NandanaImg,
             bgColor: "#6790a8",
         },
     ];
@@ -54,28 +56,28 @@ export default function TeamSection() {
             role: "Software Engineer",
             experience: "4+ years in Software Engineering",
             description:
-                "Focused on modern web apps, building smooth, scalable user experiences with React and Node.js.",
+                "Passionate about IoT, crafting smart solutions that connect devices and enhance lives.",
             image: supunImg,
             bgColor: "#33A1E0",
         },
         {
             id: 2,
-            name: "Ravishka Perera",
-            role: "Software Engineer",
-            experience: "4+ years in Software Engineering ",
-            description:
-                "Designing intuitive and human-centered interfaces that elevate brand experiences.",
-            image: ravishkaImg,
-            bgColor: "#33A1E0",
-        },
-        {
-            id: 3,
             name: "Vihanga Fernando",
             role: "Software Engineer",
             experience: "4+ years in Software Engineering",
             description:
-                "Bridging communication between clients and devs, ensuring timely and quality delivery.",
+                "Specializes in backend development, creating robust APIs and efficient server-side solutions.",
             image: vihangaImg,
+            bgColor: "#33A1E0",
+        },
+        {
+            id: 3,
+            name: "Ravishka Indraji",
+            role: "Software Engineer",
+            experience: "4+ years in Software Engineering ",
+            description:
+                "Expert in full-stack development, creating dynamic web applications with a focus on performance and usability.",
+            image: ravishkaImg,
             bgColor: "#33A1E0",
         },
         {
@@ -84,8 +86,18 @@ export default function TeamSection() {
             role: "Software Engineer",
             experience: "4+ years in IoT and Embedded Systems",
             description:
-                "Designing and optimizing smart electronic solutions for modern industries.",
-            image: IsuruImg,
+                "Focused on modern web apps, building smooth, scalable user experiences with React and Node.js.",
+            image: lakshanImg,
+            bgColor: "#33A1E0",
+        },
+        {
+            id: 4,
+            name: "Kushan Thiwanka",
+            role: "Marketing Engineer",
+            experience: "+5 years in Digital Marketing",
+            description:
+                "Specializes in SEO, content marketing, and social media strategies to boost brand visibility and engagement.",
+            image: lakshanImg,
             bgColor: "#33A1E0",
         },
 

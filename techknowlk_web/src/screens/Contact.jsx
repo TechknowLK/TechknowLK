@@ -5,7 +5,22 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import ContactInfoCard from '../components/ContactUs/ContactInfoCard'
 import MapSection from '../components/ContactUs/MapSection'
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export default function Contact() {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
+
   return (
     <div>
       <HeroSection />
@@ -37,7 +52,7 @@ export default function Contact() {
 
 
 
-      <div className='w-full grid grid-cols-1 md:grid-cols-2 p-5 md:p-10 gap-10'>
+      <div className='w-full grid grid-cols-1 md:grid-cols-2 p-5 md:p-10 gap-10' id="form">
         <SendMessageSection />
         <MapSection />
       </div>

@@ -1,8 +1,10 @@
 import React from 'react'
 import Button01 from '../Button01'
-import Button02 from '../Button02'
+import { useNavigate } from 'react-router-dom'
 
 export default function OtherSection1() {
+    const navigate = useNavigate();
+
     return (
         <div className='relative w-full flex items-center justify-center px-5  md:px-10 py-3 md:py-6 my-5 md:my-20 ' data-aos="fade-up" data-aos-anchor-placement="start-start">
 
@@ -14,7 +16,7 @@ export default function OtherSection1() {
                     Join our growing list of satisfied clients and discover how we can transform your business with innovative technology solutions.
                 </p>
                 <div className='w-full flex justify-center items-center py-4'>
-                    <Button01 label="Get in Touch" onClick={() => alert("Clicked!")} />
+                    <Button01 label="Get in Touch" onClick={() => navigate("/contact")} />
                     
 
                 </div>
