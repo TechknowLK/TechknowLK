@@ -1,11 +1,20 @@
 import React from 'react'
+import { NavBar } from '../components/NavBar'
+import HeroSection from '../components/AboutUs/HeroSection'
+import OurStorySection from '../components/AboutUs/OurStorySection'
+import VMSection from '../components/AboutUs/VMSection'
+import OtherSection1 from '../components/AboutUs/OtherSection1'
+import Footer from '../components/Footer'
+import TeamSection from '../components/AboutUs/TeamSection'
 
 export const AboutUs = () => {
   return (
-   <div className='w-full h-full relative'>
-      <div className='flex justify-center items-center'>
-          <div className='text-[30px] text-blue-700'>About Page</div> 
-      </div>
-   </div>
+   <div className='relative w-full bg-[#F5F5F5]'>
+       <HeroSection/>
+       <OurStorySection/>
+       <VMSection/>
+       <OtherSection1/>
+       <TeamSection/>
+    </div>
   )
 }

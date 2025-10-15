@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+/* index.css */
+@import url("https://unpkg.com/leaflet/dist/leaflet.css");
+
+/* or if you prefer to import from node_modules in your JS: */
+
+
+/* Apply Poppins font globally */
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body, #root {
+  overflow-x: hidden;
+}
