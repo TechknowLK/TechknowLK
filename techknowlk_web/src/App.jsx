@@ -10,6 +10,8 @@ import { NavBar } from './components/NavBar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
+import NotFound from './screens/NotfoundPage';
+
 export const App = () => {
   return (
     <Router>
@@ -22,6 +24,7 @@ export const App = () => {
         <Route path='/products' element={<Products />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer/>
     </Router>
