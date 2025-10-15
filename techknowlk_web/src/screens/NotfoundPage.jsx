@@ -4,8 +4,11 @@ import { Home, ArrowLeft } from "lucide-react";
 import Button01 from "../components/Button01";
 import Button02 from "../components/Button02";
 
+import { useNavigate } from "react-router-dom";
+
 const NotFound = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
@@ -34,17 +37,11 @@ const NotFound = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button01 label={"Go to Home"} asChild size="lg" className="gap-2">
-            <Link to="/">
-              Go to Home
-            </Link>
-          </Button01>
+          <Button01 label={"Go to Home"} asChild size="lg" className="gap-2" onClick={() => { navigate("/"); }} />
 
-          <Button02 label={"Go Back"} asChild variant="outline" size="lg" className="gap-2">
-            <Link to="javascript:history.back()">
-              
-            </Link>
-          </Button02>
+
+          <Button02 label={"Go Back"} asChild variant="outline" size="lg" className="gap-2" onClick={() => { navigate(-1); }} />
+
         </div>
       </div>
     </div>

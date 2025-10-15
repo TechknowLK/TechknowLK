@@ -5,6 +5,7 @@ import supunImg from "/assets/Img/TeamImages/Supun.png";
 import ravishkaImg from "/assets/Img/TeamImages/Ravishka.png";
 import vihangaImg from "/assets/Img/TeamImages/Vihanga.png";
 import lakshanImg from "/assets/Img/TeamImages/Lakshan.png";
+import kushanImg from "/assets/Img/TeamImages/Kushan.png";  
 import IsuruImg from "/assets/Img/TeamImages/Isuru.png";
 import LalithImg from "/assets/Img/TeamImages/Lalith.png";
 import NandanaImg from "/assets/Img/TeamImages/Nandana.png";
@@ -97,7 +98,7 @@ export default function TeamSection() {
             experience: "+5 years in Digital Marketing",
             description:
                 "Specializes in SEO, content marketing, and social media strategies to boost brand visibility and engagement.",
-            image: lakshanImg,
+            image: kushanImg,
             bgColor: "#33A1E0",
         },
 

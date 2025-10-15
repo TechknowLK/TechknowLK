@@ -11,8 +11,12 @@ import { PhoneCall } from 'lucide-react';
 import { Mail } from 'lucide-react';
 import { MapPin } from 'lucide-react';
 
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Footer() {
+    const navigate = useNavigate();
+
     return (
         <section className="w-full bg-gradient-to-r from-[#012A43] to-[#033d5f] py-8 px-6">
             <div className="w-full ">
@@ -44,8 +48,8 @@ export default function Footer() {
                     <div className='flex flex-col items-center'>
                         <p className='text-[#a9abad] text-md'>Empowering businesses across Sri Lanka with innovative IT, IoT, and automation solutions for over a decade.</p>
                         <div className="w-full flex  justify-center md:justify-start gap-8 mt-8">
-                            <Facebook className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform" />
-                            <Instagram className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform" />
+                            <Facebook className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform"  onClick={() => (window.location.href = "https://www.facebook.com/share/16M8QTiZDD/")} />
+                            <Instagram className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform" onClick={() => (window.location.href = "https://www.instagram.com/tech_knowlk?igsh=dnN6ODRjOTl5a3dn")} />
                             <Linkedin className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform" />
                             <Twitter className="w-6 h-6 text-[#a9abad] cursor-pointer hover:scale-110 transition-transform" />
                         </div>

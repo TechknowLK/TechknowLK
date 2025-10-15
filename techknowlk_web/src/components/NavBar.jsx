@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // modern icons
 import logo from "/assets/Img/logo02.png";
+  
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -19,7 +22,7 @@ export const NavBar = () => {
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#012A3A]/90 backdrop-blur-md shadow-md transition-all duration-300">
       <div className="w-full mx-auto flex items-center justify-between px-6 md:px-[5%] py-3">
         {/* Logo Section */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" onClick={() => navigate("/")}>
           <img
             src={logo}
             alt="Logo"
