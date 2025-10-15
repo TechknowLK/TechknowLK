@@ -18,11 +18,11 @@ export default function SendMessageSection() {
             console.log("Form Data:", data);
 
             // Your backend URL (if using different ports)
-            const base_url = import.meta.env.VITE_API_URL || "http://localhost:3001";
+            // const base_url = import.meta.env.VITE_API_URL || "http://localhost:3001";
+            //
+            // console.log(`Base URL: ${base_url}`);
 
-            console.log(`Base URL: ${base_url}`);
-
-            const res = await fetch(`${base_url}/send-email`, {
+            const res = await fetch('/api/send-email', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
