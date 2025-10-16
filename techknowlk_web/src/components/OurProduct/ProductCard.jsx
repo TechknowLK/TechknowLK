@@ -3,15 +3,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
 import Button02 from "../Button02";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ProjectCard = ({ title, description, images = [], technologies }) => {
   return (
     <div className="overflow-hidden group transition-all duration-300 hover:shadow-lg rounded-lg border-2 border-gray-200 bg-white h-full flex flex-col">
 
-      {/* 🔹 Swiper Image Slider Section */}
-      <div className="aspect-video overflow-hidden">
+      {/* 🔹 Swiper Image Slider Section with Inner Shadow */}
+      <div className="aspect-video overflow-hidden relative">
         <Swiper
           modules={[Autoplay, Pagination]}
           spaceBetween={10}
@@ -34,6 +36,13 @@ export const ProjectCard = ({ title, description, images = [], technologies }) =
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* 🔸 Inner Shadow Overlay */}
+        <div className="absolute inset-0 pointer-events-none shadow-inner" 
+             style={{
+               boxShadow: 'inset 0 0 60px rgba(0, 0, 0, 0.25)',
+             }}
+        />
       </div>
 
       {/* 🔹 Info Section */}
@@ -57,7 +66,7 @@ export const ProjectCard = ({ title, description, images = [], technologies }) =
         <div className="mt-8 flex justify-center">
           <Button02
             label="View Details"
-            onClick={() => alert(`Viewing details for ${title}`)}
+            onClick={() => toast.info("🚧 This page is under construction. Coming soon!")}
           />
         </div>
       </div>
