@@ -11,10 +11,12 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 import NotFound from './screens/NotfoundPage';
+import SmoothScroll from './components/SmoothScroll';
 
 export const App = () => {
   return (
     <Router>
+      <SmoothScroll />
       <ScrollToTop />
       <NavBar />
       <Routes>
