@@ -15,6 +15,8 @@ import IotImage from "/assets/Img/Iot_image.png";
 import ConsultingImage from "/assets/Img/Cunsulting_image.png";
 import Button01 from "../Button01";
 
+import { useNavigate } from 'react-router-dom';
+
 
 const services = [
   {
@@ -68,6 +70,12 @@ const services = [
 ];
 
 export default function ServiceSection() {
+  const navigate = useNavigate();
+
+  const handleReadMore = (category) => {
+    navigate(`/products?category=${encodeURIComponent(category)}`);
+  };
+
   return (
     <section className="w-full flex flex-col gap-20 px-6 lg:px-16 py-10">
       {services.map((service, index) => {
@@ -82,7 +90,7 @@ export default function ServiceSection() {
             }`}
           >
             {/* Left Content */}
-            <div className="flex flex-col gap-4 flex-1 ">
+            <div className="flex flex-col gap-4 flex-1 " data-aos="fade-right" data-aos-delay="100">
               <div className="flex flex-row items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-[#33A1E0] flex items-center justify-center shadow-[0_0_20px_rgba(51,161,224,0.4)]">
                   {FirstIcon && <FirstIcon className="text-white w-6 h-6" />}
@@ -118,12 +126,15 @@ export default function ServiceSection() {
               </div>
 
               <div>
-                <Button01 label="Read More" onClick={() => window.location.href = '/product'} />
+                <Button01
+                  label="Read More"
+                  onClick={() => handleReadMore(service.title)}
+                />
               </div>
             </div>
 
             {/* Right Image */}
-            <div className="flex justify-center flex-1 ">
+            <div className="flex justify-center flex-1 " data-aos="fade-left" data-aos-delay="100">
               <img
                 src={service.image}
                 alt={service.title}
