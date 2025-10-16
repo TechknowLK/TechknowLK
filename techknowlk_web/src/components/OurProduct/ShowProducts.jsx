@@ -29,6 +29,14 @@ import cctvSetup02 from "/assets/Img/ProductImages/cctv_setup_02.jfif";
 import It_Comsultion_01 from "/assets/Img/ProductImages/It_consulting_01.jpg";
 import It_Comsultion_02 from "/assets/Img/ProductImages/It_consulting_02.jpg";
 
+import PharmacySystem_01 from "/assets/Img/ProductImages/ph_System_01.jpeg";
+import PharmacySystem_02 from "/assets/Img/ProductImages/ph_System_02.png";
+import PharmacySystem_03 from "/assets/Img/ProductImages/ph_System_03.png";
+
+import tourism_01 from "/assets/Img/ProductImages/tourism_01.jfif";
+import tourism_02 from "/assets/Img/ProductImages/tourism_02.jfif";
+import tourism_03 from "/assets/Img/ProductImages/tourism_03.jfif";
+
 
 
 const projects = [
@@ -39,7 +47,7 @@ const projects = [
       "Custom ERP solution integrating inventory management, sales tracking, and financial reporting with real-time analytics.",
     images: [interlock_system_01, interlock_system_02, interlock_system_03],
     technologies: ["JavaFX", "Java", "MySQL"],
-    category: "Electrical & Networking",
+    category: "Software Solutions",
   },
   {
     id: 2,
@@ -64,7 +72,7 @@ const projects = [
     title: "Pharmacy Management System",
     description:
       "Comprehensive pharmacy platform for handling prescriptions, inventory, and billing with secure role-based access and real-time stock tracking.",
-    images: [projectInventory, projectEducation, projectEducation],
+    images: [PharmacySystem_01, PharmacySystem_02, PharmacySystem_03],
     technologies: ["JavaFX", "Java", "MySQL"],
     category: "Software Solutions",
   },
@@ -89,11 +97,11 @@ const projects = [
 
   {
     id: 7,
-    title: "Learning Management System",
+    title: "Tourism website",
     description:
-      "Interactive e-learning platform with course management, student tracking, and virtual classroom features.",
-    images: [projectInventory, projectEducation, projectEducation],
-    technologies: ["Next.js", "Express", "MongoDB"],
+      "Interactive tourism platform with travel packages, booking management, and user reviews.",
+    images: [tourism_01, tourism_02, tourism_03],
+    technologies: ["React", "Node.js", "MongoDB"],
     category: "Software Solutions",
   },
 
