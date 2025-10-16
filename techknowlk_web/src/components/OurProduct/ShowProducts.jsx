@@ -3,19 +3,41 @@ import { ProjectCard } from "./ProductCard";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import projectNetwork from "/assets/Img/Networking_image.png";
-import projectMobile from "/assets/Img/Networking_image.png";
-import projectIot from "/assets/Img/Networking_image.png";
-import projectPharmacy from "/assets/Img/Networking_image.png";
+import { useLocation } from "react-router-dom";
+
+
 import projectInventory from "/assets/Img/Networking_image.png";
-import projectCloud from "/assets/Img/Networking_image.png";
-import projectCrm from "/assets/Img/Networking_image.png";
-import projectEcommerce from "/assets/Img/Networking_image.png";
-import projectSecurity from "/assets/Img/Networking_image.png";
-import projectHealthcare from "/assets/Img/Networking_image.png";
-import projectBanking from "/assets/Img/Networking_image.png";
 import projectEducation from "/assets/Img/Networking_image.png";
 import Button03 from "../Button03";
+
+
+import interlock_system_01 from "/assets/Img/ProductImages/interlock_system_01.jfif";
+import interlock_system_02 from "/assets/Img/ProductImages/interlock_system_02.jfif";
+import interlock_system_03 from "/assets/Img/ProductImages/interlock_system_03.jfif";
+
+import loanSystem_01 from "/assets/Img/ProductImages/loan_system_01.jpg";
+import loanSystem_02 from "/assets/Img/ProductImages/loan_system_02.jpg";
+import loanSystem_03 from "/assets/Img/ProductImages/loan_system_03.jpg";
+
+import homeSystem_01 from "/assets/Img/ProductImages/smart_home_system_03.jfif";
+import homeSystem_02 from "/assets/Img/ProductImages/smart_home_system_02.jfif";
+import homeSystem_03 from "/assets/Img/ProductImages/smart_home_system_01.jfif";
+
+import cctvSetup01 from "/assets/Img/ProductImages/cctv_setup_01.jfif";
+import cctvSetup02 from "/assets/Img/ProductImages/cctv_setup_02.jfif";
+
+import It_Comsultion_01 from "/assets/Img/ProductImages/It_consulting_01.jpg";
+import It_Comsultion_02 from "/assets/Img/ProductImages/It_consulting_02.jpg";
+
+import PharmacySystem_01 from "/assets/Img/ProductImages/ph_System_01.jpeg";
+import PharmacySystem_02 from "/assets/Img/ProductImages/ph_System_02.png";
+import PharmacySystem_03 from "/assets/Img/ProductImages/ph_System_03.png";
+
+import tourism_01 from "/assets/Img/ProductImages/tourism_01.jfif";
+import tourism_02 from "/assets/Img/ProductImages/tourism_02.jfif";
+import tourism_03 from "/assets/Img/ProductImages/tourism_03.jfif";
+
+
 
 const projects = [
   {
@@ -23,108 +45,74 @@ const projects = [
     title: "Interlock Shop System",
     description:
       "Custom ERP solution integrating inventory management, sales tracking, and financial reporting with real-time analytics.",
-    image: projectInventory,
+    images: [interlock_system_01, interlock_system_02, interlock_system_03],
     technologies: ["JavaFX", "Java", "MySQL"],
-    category: "Electrical & Networking",
+    category: "Software Solutions",
   },
   {
     id: 2,
     title: "Loan Management System",
     description:
-      "Custom ERP solution integrating inventory management, sales tracking, and financial reporting with real-time analytics.",
-    image: projectBanking,
-    technologies: ["PHP", "Java", "MySQL"],
+      "Smart financial solution for managing money collections, client verifications, and data analysis with automated reporting and insights.",
+    images: [loanSystem_01, loanSystem_02, loanSystem_03],
+    technologies: ["Java", "MySQL"],
     category: "Software Solutions",
   },
   {
     id: 3,
     title: "Smart Home System",
     description:
-      "Custom ERP solution integrating inventory management, sales tracking, and financial reporting with real-time analytics.",
-    image: projectIot,
-    technologies: ["JavaFX", "Java", "MySQL"],
+      "IoT-based home automation system with remote control, energy management, and security features accessible via mobile app.",
+    images: [homeSystem_01, homeSystem_02, homeSystem_03],
+    technologies: ["Arduino", "Raspberry Pi", "MQTT"],
     category: "IoT & Automation",
   },
   {
     id: 4,
     title: "Pharmacy Management System",
     description:
-      "Custom ERP solution integrating inventory management, sales tracking, and financial reporting with real-time analytics.",
-    image: projectPharmacy,
+      "Comprehensive pharmacy platform for handling prescriptions, inventory, and billing with secure role-based access and real-time stock tracking.",
+    images: [PharmacySystem_01, PharmacySystem_02, PharmacySystem_03],
     technologies: ["JavaFX", "Java", "MySQL"],
     category: "Software Solutions",
   },
   {
     id: 5,
-    title: "Network Infrastructure System",
+    title: "CCTV Surveillance System",
     description:
-      "Advanced networking solution with monitoring capabilities, security protocols, and bandwidth management features.",
-    image: projectNetwork,
-    technologies: ["Python", "React", "PostgreSQL"],
+      "Advanced security solution with monitoring capabilities, threat detection, and real-time alerts.",
+    images: [cctvSetup01, cctvSetup02],
+    technologies: ["IP Cameras", "NVR", "Networking"],
     category: "Electrical & Networking",
   },
   {
     id: 6,
-    title: "Mobile Application Suite",
-    description:
-      "Comprehensive mobile app development platform with cross-platform compatibility and seamless user experience.",
-    image: projectMobile,
-    technologies: ["React Native", "Node.js", "MongoDB"],
-    category: "Software Solutions",
-  },
-  {
-    id: 7,
-    title: "Cloud Infrastructure Platform",
-    description:
-      "Scalable cloud computing solution with automated deployment, load balancing, and disaster recovery systems.",
-    image: projectCloud,
-    technologies: ["AWS", "Docker", "Kubernetes"],
-    category: "Electrical & Networking",
-  },
-  {
-    id: 8,
-    title: "Customer Relationship Management",
-    description:
-      "Powerful CRM platform with sales pipeline management, customer analytics, and automated marketing campaigns.",
-    image: projectCrm,
-    technologies: ["Angular", "Spring Boot", "Oracle"],
-    category: "Software Solutions",
-  },
-  {
-    id: 9,
     title: "E-commerce Platform",
     description:
       "Full-featured online shopping platform with payment gateway integration, inventory sync, and order management.",
-    image: projectEcommerce,
+    images: [projectInventory, projectEducation, projectEducation],
     technologies: ["Vue.js", "Laravel", "MySQL"],
     category: "Software Solutions",
   },
+
   {
-    id: 10,
-    title: "Security Monitoring System",
+    id: 7,
+    title: "Tourism website",
     description:
-      "Comprehensive security solution with real-time surveillance, threat detection, and automated alert systems.",
-    image: projectSecurity,
-    technologies: ["Python", "TensorFlow", "Redis"],
-    category: "IoT & Automation",
-  },
-  {
-    id: 11,
-    title: "Healthcare Management Platform",
-    description:
-      "Integrated healthcare system with patient records, appointment scheduling, and medical billing capabilities.",
-    image: projectHealthcare,
-    technologies: ["React", "Node.js", "PostgreSQL"],
+      "Interactive tourism platform with travel packages, booking management, and user reviews.",
+    images: [tourism_01, tourism_02, tourism_03],
+    technologies: ["React", "Node.js", "MongoDB"],
     category: "Software Solutions",
   },
+
   {
-    id: 12,
-    title: "Learning Management System",
+    id: 8,
+    title: "IT Consulting",
     description:
-      "Interactive e-learning platform with course management, student tracking, and virtual classroom features.",
-    image: projectEducation,
-    technologies: ["Next.js", "Express", "MongoDB"],
-    category: "Software Solutions",
+      "Strategic IT consulting services to optimize infrastructure, enhance cybersecurity, and drive digital transformation for business growth.",
+    images: [It_Comsultion_01, It_Comsultion_02],
+    technologies: ["IT Strategy", "Cybersecurity", "Cloud Solutions"],
+    category: "IT Consulting",
   },
 ];
 
@@ -132,16 +120,27 @@ const categories = [
   "Electrical & Networking",
   "Software Solutions",
   "IoT & Automation",
+  "IT Consulting",
 ];
 
 const Index = () => {
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [activeButton, setActiveButton] = useState(false);
+  const [activeButton, setActiveButton] = useState("All");
 
   useEffect(() => {
     AOS.init({ duration: 500, once: true, easing: "ease-in-out" });
     AOS.refresh();
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const categoryFromURL = params.get("category");
+    if (categoryFromURL) {
+      setSelectedCategory(categoryFromURL);
+      setActiveButton(categoryFromURL);
+    }
+  }, [location.search]);
 
   const filteredProjects =
     selectedCategory === "All"
@@ -189,7 +188,7 @@ const Index = () => {
               <ProjectCard
                 title={project.title}
                 description={project.description}
-                image={project.image}
+                images={project.images}
                 technologies={project.technologies}
               />
             </div>

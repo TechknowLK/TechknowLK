@@ -11,10 +11,15 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 import NotFound from './screens/NotfoundPage';
+import SmoothScroll from './components/SmoothScroll';
+
+import { ToastContainer } from "react-toastify";
 
 export const App = () => {
   return (
     <Router>
+      <ToastContainer position="bottom-center" theme="colored" />
+      <SmoothScroll />
       <ScrollToTop />
       <NavBar />
       <Routes>

@@ -2,6 +2,8 @@ import React from "react";
 import { Calendar } from "lucide-react";
 import Button02 from "../Button02";
  // assuming your custom button
+ import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BlogCard = ({ title, excerpt, category, date, image, slug }) => {
   return (
@@ -37,7 +39,7 @@ const BlogCard = ({ title, excerpt, category, date, image, slug }) => {
       <div className="p-6 pt-0 mt-auto flex justify-center">
         <Button02
           label={"Read More"}
-          onClick={() => console.log(`Read more about: ${slug}`)}
+          onClick={() => toast.info(`🚧 This page is under construction. Coming soon!`)}
         />
       </div>
     </div>
