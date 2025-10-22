@@ -90,7 +90,7 @@ const WhyChoose = () => {
           <div
             className="bg-[#154D71] rounded-lg p-8 text-white "
             data-aos="fade-left"
-            data-aos-duration="1500" data-aos-delay="1000"
+            data-aos-duration="1500" data-aos-delay="200"
           >
             <h3 className="text-2xl font-bold mb-6">Proven Track Record</h3>
             <p className="text-white/70 mb-8 text-sm">

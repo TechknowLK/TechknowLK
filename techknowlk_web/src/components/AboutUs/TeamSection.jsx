@@ -94,7 +94,7 @@ export default function TeamSection() {
         {
             id: 4,
             name: "Kushan Thiwanka",
-            role: "Marketing Engineer",
+            role: "Sales Engineer",
             experience: "+5 years in Digital Marketing",
             description:
                 "Specializes in SEO, content marketing, and social media strategies to boost brand visibility and engagement.",
