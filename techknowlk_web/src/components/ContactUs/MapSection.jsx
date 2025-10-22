@@ -39,7 +39,7 @@ export default function MapSection() {
                 </MapContainer>
             </div>
             <div className="w-full h-auto mt-10 ">
-                <div className="bg-[#dee9ee]/20 rounded-2xl flex flex-col items-center shadow-lg border border-[#c5e0f2]/50 p-8 text-center transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
+                <div className="bg-[#dee9ee]/20 rounded-2xl flex flex-col items-center shadow-lg border border-[#c5e0f2]/50 p-8 text-center transition-all duration-500 hover:shadow-2xl ">
 
                     {/* Header */}
                     <h1 className="text-2xl font-bold text-[#012A3A] mb-6 tracking-wide">
@@ -64,7 +64,7 @@ export default function MapSection() {
                             <p className="text-base md:text-lg font-semibold text-[#33A1E0] mb-2">
                                 Weekends
                             </p>
-                            <p className="text-sm md:text-base text-gray-700">Saturday – Sunday</p>
+                            <p className="text-sm md:text-base text-gray-700">Sat – Sun</p>
                             <p className="text-sm md:text-base font-medium text-[#012A3A]">
                                 9:00 AM – 1:00 PM
                             </p>

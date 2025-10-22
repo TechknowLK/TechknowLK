@@ -1,14 +1,26 @@
+@import url("https://unpkg.com/leaflet/dist/leaflet.css");
+/* or if you prefer to import from node_modules in your JS: */
+
+
 @import "tailwindcss";
 
-/* index.css */
-@import url("https://unpkg.com/leaflet/dist/leaflet.css");
 
-/* or if you prefer to import from node_modules in your JS: */
+
 
 
 /* Apply Poppins font globally */
 * {
   font-family: 'Poppins', sans-serif;
+  cursor: default;
+  user-select: none;
+}
+
+/* Keep cursor pointer for interactive stuff */
+button,
+a,
+[role="button"],
+input[type="submit"] {
+  cursor: pointer;
 }
 
 html, body, #root {
