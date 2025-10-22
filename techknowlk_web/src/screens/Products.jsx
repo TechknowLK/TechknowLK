@@ -10,10 +10,10 @@ export default function Products() {
     <div>
         
          <SEOHead 
-        title="Smart Technology Products & Solutions | TechKnow Lanka Portfolio"
-        description="Explore TechKnow Lanka's innovative technology products including IoT devices, custom software solutions, automation systems, and smart business applications. Discover cutting-edge products designed for modern businesses in Sri Lanka."
-        keywords="technology products, IoT devices, smart solutions portfolio, custom software products, automation systems, business technology products, tech products Sri Lanka, innovative solutions, smart devices, digital products TechKnow Lanka"
-        url="https://techknowlanka.com/products"
+        title="Smart Technology Products & Solutions | TechKnowLK Portfolio"
+        description="Explore TechKnowLK's innovative technology products including IoT devices, custom software solutions, automation systems, and smart business applications. Discover cutting-edge products designed for modern businesses in Sri Lanka."
+        keywords="technology products, IoT devices, smart solutions portfolio, custom software products, automation systems, business technology products, tech products Sri Lanka, innovative solutions, smart devices, digital products TechKnowLK"
+        url="https://techknowlk.com/products"
       />
         <HeroSection/>
         <ShowProducts/>
