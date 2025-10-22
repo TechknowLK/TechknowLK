@@ -85,18 +85,9 @@ const projects = [
     technologies: ["IP Cameras", "NVR", "Networking"],
     category: "Electrical & Networking",
   },
-  {
-    id: 6,
-    title: "E-commerce Platform",
-    description:
-      "Full-featured online shopping platform with payment gateway integration, inventory sync, and order management.",
-    images: [projectInventory, projectEducation, projectEducation],
-    technologies: ["Vue.js", "Laravel", "MySQL"],
-    category: "Software Solutions",
-  },
 
   {
-    id: 7,
+    id: 6,
     title: "Tourism website",
     description:
       "Interactive tourism platform with travel packages, booking management, and user reviews.",
@@ -106,7 +97,7 @@ const projects = [
   },
 
   {
-    id: 8,
+    id: 7,
     title: "IT Consulting",
     description:
       "Strategic IT consulting services to optimize infrastructure, enhance cybersecurity, and drive digital transformation for business growth.",
