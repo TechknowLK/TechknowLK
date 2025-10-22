@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
 const SEOHead = ({ 
-  title = "TechKnow Lanka - Smart Technology Solutions",
-  description = "Transform your business with TechKnow Lanka's cutting-edge technology solutions. Specializing in IoT, software development, networking, and digital transformation services in Sri Lanka.",
-  keywords = "TechKnow Lanka, technology solutions, IoT, software development, networking, digital transformation, smart solutions, automation, tech consulting, Sri Lanka",
+  title = "TechKnowLK - Smart Technology Solutions",
+  description = "Transform your business with TechKnowLK's cutting-edge technology solutions. Specializing in IoT, software development, networking, and digital transformation services in Sri Lanka.",
+  keywords = "TechKnowLK, technology solutions, IoT, software development, networking, digital transformation, smart solutions, automation, tech consulting, Sri Lanka",
   image = "/logo_02.jpeg",
-  url = "https://techknowlanka.com",
+  url = "https://techknowlk.com",
   type = "website"
 }) => {
   useEffect(() => {
