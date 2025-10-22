@@ -25,10 +25,10 @@ export default function Contact() {
   return (
     <div>
        <SEOHead 
-        title="Contact TechKnow Lanka - Get Tech Solutions Quote | Call +94 77 133 6735"
-        description="Contact TechKnow Lanka for technology solutions consultation. Located in Kotiyakumbura, Sri Lanka. Call +94 77 133 6735 or email techknowlkinfo@gmail.com. Free consultation available for IoT, software development and digital transformation projects."
-        keywords="contact TechKnow Lanka, technology solutions Sri Lanka, tech consultation Kotiyakumbura, IoT solutions contact, software development quote, digital transformation consultation, tech company Sri Lanka contact, +94 77 133 6735, techknowlkinfo@gmail.com"
-        url="https://techknowlanka.com/contact"
+        title="Contact TechKnowLK - Get Tech Solutions Quote | Call +94 77 133 6735"
+        description="Contact TechKnowLK for technology solutions consultation. Located in Kotiyakumbura, Sri Lanka. Call +94 77 133 6735 or email techknowlkinfo@gmail.com. Free consultation available for IoT, software development and digital transformation projects."
+        keywords="contact TechKnowLK, technology solutions Sri Lanka, tech consultation Kotiyakumbura, IoT solutions contact, software development quote, digital transformation consultation, tech company Sri Lanka contact, +94 77 133 6735, techknowlkinfo@gmail.com"
+        url="https://techknowlk.com/contact"
       />
       <HeroSection />
       <div className='w-full flex flex-col items-center py-10 '>

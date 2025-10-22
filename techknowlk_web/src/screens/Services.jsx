@@ -9,10 +9,10 @@ export default function Services() {
   return (
     <div className='relative w-full bg-[#F5F5F5]'>
         <SEOHead 
-          title="Technology Services - IoT, Software Development & Digital Solutions | TechKnow Lanka"
-          description="Explore TechKnow Lanka's comprehensive technology services including IoT solutions, custom software development, networking, and digital transformation services for businesses in Sri Lanka."
-          keywords="TechKnow Lanka, technology solutions, IoT, software development, networking, digital transformation, smart solutions, automation, tech consulting,mobile solutions, CCTV solutions, Sri Lanka"
-          url="https://techknowlanka.com/services"
+          title="Technology Services - IoT, Software Development & Digital Solutions | TechKnowLK"
+          description="Explore TechKnowLK's comprehensive technology services including IoT solutions, custom software development, networking, and digital transformation services for businesses in Sri Lanka."
+          keywords="TechKnowLK, technology solutions, IoT, software development, networking, digital transformation, smart solutions, automation, tech consulting,mobile solutions, CCTV solutions, Sri Lanka"
+          url="https://techknowlk.com/services"
         />
         <HeroSection/>
         <ServiceSection/>

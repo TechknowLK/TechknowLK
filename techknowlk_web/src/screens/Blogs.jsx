@@ -9,10 +9,10 @@ export default function Blogs() {
   return (
     <div>
         <SEOHead 
-        title="Tech Blog & Articles - Latest Technology Trends | TechKnow Lanka"
+        title="Tech Blog & Articles - Latest Technology Trends | TechKnow Lanka Engineers"
         description="Stay updated with the latest technology trends, IoT innovations, software development insights, and digital transformation strategies. Expert articles and tech news from TechKnow Lanka's industry professionals."
         keywords="tech blog, technology articles, IoT trends, software development blog, digital transformation insights, tech news Sri Lanka, technology updates, automation trends, smart solutions blog, tech industry news"
-        url="https://techknowlanka.com/blogs"
+        url="https://techknowlk.com/blogs"
       />
         <BlogHeroSection/>
         <Blog/>
