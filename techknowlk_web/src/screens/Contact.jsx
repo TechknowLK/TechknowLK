@@ -7,6 +7,7 @@ import MapSection from '../components/ContactUs/MapSection'
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import SEOHead from '../components/SEOHead'
 
 export default function Contact() {
 
@@ -23,6 +24,12 @@ export default function Contact() {
 
   return (
     <div>
+       <SEOHead 
+        title="Contact TechKnow Lanka - Get Tech Solutions Quote | Call +94 77 133 6735"
+        description="Contact TechKnow Lanka for technology solutions consultation. Located in Kotiyakumbura, Sri Lanka. Call +94 77 133 6735 or email techknowlkinfo@gmail.com. Free consultation available for IoT, software development and digital transformation projects."
+        keywords="contact TechKnow Lanka, technology solutions Sri Lanka, tech consultation Kotiyakumbura, IoT solutions contact, software development quote, digital transformation consultation, tech company Sri Lanka contact, +94 77 133 6735, techknowlkinfo@gmail.com"
+        url="https://techknowlanka.com/contact"
+      />
       <HeroSection />
       <div className='w-full flex flex-col items-center py-10 '>
         <h1 className="text-2xl px-4 md:text-3xl lg:text-4xl font-bold leading-tight drop-shadow-sm ">
