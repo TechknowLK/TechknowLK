@@ -98,4 +98,17 @@ const HeroSection = () => {
   }
 };
 
+
+// // PropTypes for type checking
+// HeroSection.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   subtitle: PropTypes.string,
+//   videoUrl: PropTypes.string.isRequired,
+// };
+
+// // Default props for optional values
+// HeroSection.defaultProps = {
+//   subtitle: "Welcome to TechKnowLK!",
+//   videoUrl: video,
+// };
 export default HeroSection;
