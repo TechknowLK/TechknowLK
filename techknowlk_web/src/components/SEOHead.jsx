@@ -3,16 +3,16 @@ import React, { useEffect } from 'react';
 const SEOHead = ({ 
   title = "TechKnowLK - Smart Technology Solutions",
   description = "Transform your business with TechKnowLK's cutting-edge technology solutions. Specializing in IoT, software development, networking, and digital transformation services in Sri Lanka.",
-  keywords = "TechKnowLK, technology solutions, IoT, software development, networking, digital transformation, smart solutions, automation, tech consulting, Sri Lanka",
-  image = "https://techknowlk.com/logo_02.jpeg",
+  keywords = "TechKnowLK, Techknow Lanka Engineers , technology solutions, IoT, software development, networking, digital transformation, smart solutions, automation, tech consulting, Sri Lanka",
+  image = "https://techknowlk.com/logo_03.jpeg?v=3", 
   url = "https://techknowlk.com",
   type = "website"
 }) => {
   useEffect(() => {
-    // Update document title
+    // --- Set document title ---
     document.title = title;
 
-    // Update or create meta tags
+    // --- Update or create meta tags ---
     const updateMetaTag = (name, content, property = false) => {
       const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
       let metaTag = document.querySelector(selector);
@@ -29,8 +29,9 @@ const SEOHead = ({
       metaTag.setAttribute('content', content);
     };
 
-    // Update canonical link
-    const updateCanonical = (href) => {
+
+    // --- Canonical ---
+     const updateCanonical = (href) => {
       let canonical = document.querySelector('link[rel="canonical"]');
       if (!canonical) {
         canonical = document.createElement('link');
@@ -40,30 +41,48 @@ const SEOHead = ({
       canonical.setAttribute('href', href);
     };
 
-    // Basic Meta Tags
+    // --- Remove existing JSON-LD (if re-render) ---
+    const existingJsonLd = document.querySelector('script[type="application/ld+json"]');
+    if (existingJsonLd) {
+      existingJsonLd.remove();
+    }
+
+    // --- Inject JSON-LD (structured data) ---
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TechKnowLK",
+      "url": url,
+      "logo": image,
+      "sameAs": [
+        "https://www.facebook.com/share/16M8QTiZDD/",
+        "https://www.instagram.com/tech_knowlk?igsh=dnN6ODRjOTl5a3dn",
+        "https://www.linkedin.com/company/techknowlk/"
+      ]
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+
+    // --- Apply meta tags ---
     updateMetaTag('description', description);
     updateMetaTag('keywords', keywords);
-    
-    // Open Graph Meta Tags
     updateMetaTag('og:title', title, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:type', type, true);
     updateMetaTag('og:url', url, true);
     updateMetaTag('og:image', image, true);
-    updateMetaTag('og:site_name', 'TechKnow Lanka', true);
-    
-    // Twitter Card Meta Tags
+    updateMetaTag('og:site_name', 'TechKnowLK', true);
     updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', title);
     updateMetaTag('twitter:description', description);
     updateMetaTag('twitter:image', image);
-    
-    // Canonical URL
     updateCanonical(url);
 
   }, [title, description, keywords, image, url, type]);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default SEOHead;
