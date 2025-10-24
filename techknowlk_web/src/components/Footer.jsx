@@ -1,6 +1,6 @@
 import React from 'react'
 import Button01 from './Button01'
-import logo from "/assets/Img/logo.png";
+import logo from "/techknow_lk_64x64_logo.png";
 
 import { Facebook } from 'lucide-react';
 import { Instagram } from 'lucide-react';
