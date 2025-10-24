@@ -4,7 +4,7 @@ const SEOHead = ({
   title = "TechKnowLK - Smart Technology Solutions",
   description = "Transform your business with TechKnowLK's cutting-edge technology solutions. Specializing in IoT, software development, networking, and digital transformation services in Sri Lanka.",
   keywords = "TechKnowLK, Techknow Lanka Engineers , technology solutions, IoT, software development, networking, digital transformation, smart solutions, automation, tech consulting, Sri Lanka",
-  image = "https://techknowlk.com/logo_03.jpeg?v=3", 
+  image = "https://techknowlk.com/techknow_lk_64 x 64_logo.png", 
   url = "https://techknowlk.com",
   type = "website"
 }) => {
