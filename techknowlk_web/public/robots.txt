@@ -2,12 +2,12 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://techknowlanka.com/sitemap.xml
+Sitemap: https://techknowlk.com/sitemap.xml
 
 # Disallow admin or private areas (if any)
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /*.json$
 
 # Allow specific bots
 User-agent: Googlebot
