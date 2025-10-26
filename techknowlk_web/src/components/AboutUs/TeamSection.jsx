@@ -63,7 +63,7 @@ export default function TeamSection() {
         },
         {
             id: 2,
-            name: "Vihanga Fernando",
+            name: "Vihanga Heshan",
             role: "Software Engineer",
             experience: "4+ years in Software Engineering",
             description:
