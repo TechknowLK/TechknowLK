@@ -8,7 +8,7 @@ import Button02 from "../Button02";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const ProjectCard = ({ title, description, images = [], technologies }) => {
+export const ProjectCard = ({ title, description, images = [], technologies, onViewDetails }) => {
   return (
     <div className="overflow-hidden group transition-all duration-300 hover:shadow-lg rounded-lg border-2 border-gray-200 bg-white h-full flex flex-col">
 
@@ -38,10 +38,10 @@ export const ProjectCard = ({ title, description, images = [], technologies }) =
         </Swiper>
 
         {/* 🔸 Inner Shadow Overlay */}
-        <div className="absolute inset-0 pointer-events-none shadow-inner" 
-             style={{
-               boxShadow: 'inset 0 0 60px rgba(0, 0, 0, 0.25)',
-             }}
+        <div className="absolute inset-0 pointer-events-none shadow-inner"
+          style={{
+            boxShadow: 'inset 0 0 60px rgba(0, 0, 0, 0.25)',
+          }}
         />
       </div>
 
@@ -66,7 +66,7 @@ export const ProjectCard = ({ title, description, images = [], technologies }) =
         <div className="mt-8 flex justify-center">
           <Button02
             label="View Details"
-            onClick={() => toast.info("🚧 This page is under construction. Coming soon!")}
+            onClick={onViewDetails}
           />
         </div>
       </div>
