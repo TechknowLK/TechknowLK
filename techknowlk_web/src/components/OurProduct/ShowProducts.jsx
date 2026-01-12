@@ -37,6 +37,15 @@ import tourism_01 from "/assets/Img/ProductImages/tourism_01.jfif";
 import tourism_02 from "/assets/Img/ProductImages/tourism_02.jfif";
 import tourism_03 from "/assets/Img/ProductImages/tourism_03.jfif";
 
+import arbitem_01 from "/assets/Img/ProductImages/arbitem_01.png";
+import arbitem_02 from "/assets/Img/ProductImages/arbitem_02.png";
+
+import computer_shop_01 from "/assets/Img/ProductImages/computer_shop_01.PNG";
+import computer_shop_02 from "/assets/Img/ProductImages/computer_shop_02.PNG";
+
+import lms_01 from "/assets/Img/ProductImages/lms_01.PNG";
+import lms_02 from "/assets/Img/ProductImages/lms_02.PNG";
+
 
 
 const projects = [
@@ -96,14 +105,43 @@ const projects = [
     category: "Software Solutions",
   },
 
+
+
   {
-    id: 7,
+    id: 8,
     title: "IT Consulting",
     description:
       "Strategic IT consulting services to optimize infrastructure, enhance cybersecurity, and drive digital transformation for business growth.",
     images: [It_Comsultion_01, It_Comsultion_02],
     technologies: ["IT Strategy", "Cybersecurity", "Cloud Solutions"],
     category: "IT Consulting",
+  },
+  {
+    id: 9,
+    title: "Arbitem mobile app",
+    description:
+      "Arbitem is a mobile-based case management system designed to transform how loan-related legal cases are tracked and handled.",
+    images: [arbitem_01, arbitem_02],
+    technologies: ["Flutter", "Express js"],
+    category: "Software Solutions",
+  },
+  {
+    id: 10,
+    title: "Computer shop website",
+    description:
+      "Products & Accessories accurate stock management. Sales, Invoices & Profit real-time track. Customer details & history securely store. Daily shop work fast, simple & professional.",
+    images: [computer_shop_01, computer_shop_02],
+    technologies: ["Next.js"],
+    category: "Software Solutions",
+  },
+  {
+    id: 11,
+    title: "LMS",
+    description:
+      "Comprehensive Learning Management System for student progress tracking, course delivery, and simple administration.",
+    images: [lms_01, lms_02],
+    technologies: ["Next.js"],
+    category: "Software Solutions",
   },
 ];
 
@@ -142,7 +180,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <section className="container mx-auto px-4 py-6" >
         <div className="flex flex-wrap justify-center gap-4">
-     
+
           <Button03
             label="View All Products"
             state={activeButton === "All"}
@@ -152,12 +190,12 @@ const Index = () => {
             }}
           />
 
-      
+
           {categories.map((category) => (
             <Button03
               key={category}
               label={category}
-              state={activeButton === category} 
+              state={activeButton === category}
               onClick={() => {
                 setSelectedCategory(category);
                 setActiveButton(category);
