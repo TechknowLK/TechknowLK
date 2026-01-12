@@ -146,7 +146,7 @@ const ProjectDetailsModal = ({ project, onClose }) => {
                             ) : (
                                 <div className="text-center py-8 text-gray-400 italic">Feature list not available.</div>
                             )}
-                        </div>
+                        </div> 
 
                         {/* Call to Action */}
                         <div className="flex justify-center md:justify-end pt-4">
