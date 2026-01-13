@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -7,19 +7,32 @@ import "swiper/css/navigation";
 import { X, CheckCircle, ExternalLink, Sparkles } from "lucide-react";
 
 const ProjectDetailsModal = ({ project, onClose }) => {
+    const scrollableRef = useRef(null);
+
     if (!project) return null;
 
     // Prevent background scrolling when modal is open
     useEffect(() => {
-        // Save the original overflow value
+        // Save the original styles
         const originalOverflow = document.body.style.overflow;
+        const originalPosition = document.body.style.position;
+        const originalTop = document.body.style.top;
+        const originalWidth = document.body.style.width;
+        const scrollY = window.scrollY;
 
-        // Disable scrolling on the body
+        // Prevent background scrolling
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
         document.body.style.overflow = 'hidden';
 
         // Re-enable scrolling when component unmounts
         return () => {
+            document.body.style.position = originalPosition;
+            document.body.style.top = originalTop;
+            document.body.style.width = originalWidth;
             document.body.style.overflow = originalOverflow;
+            window.scrollTo(0, scrollY);
         };
     }, []);
 
@@ -29,6 +42,7 @@ const ProjectDetailsModal = ({ project, onClose }) => {
             <div
                 className="absolute inset-0 bg-black/70 backdrop-blur-md transition-all duration-300"
                 onClick={onClose}
+                onWheel={(e) => e.preventDefault()}
             ></div>
 
             {/* Modal Container */}
@@ -37,16 +51,16 @@ const ProjectDetailsModal = ({ project, onClose }) => {
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header with Brand Color */}
-                <div className="relative bg-[#33A1E0] p-8 text-white">
+                <div className="relative bg-[#33A1E0] px-6 py-3 text-white">
                     <div className="absolute inset-0 bg-black/5"></div>
                     <div className="relative z-10 flex items-start justify-between">
                         <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
-                                <Sparkles className="w-5 h-5 text-white/90" />
-                                <span className="text-sm font-medium text-white/90 uppercase tracking-wider">{project.category}</span>
+                                {/* <Sparkles className="w-5 h-5 text-white/90" /> */}
+                                {/* <span className="text-sm font-medium text-white/90 uppercase tracking-wider">{project.category}</span> */}
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">{project.title}</h2>
-                            <p className="text-white/90 text-sm md:text-base max-w-2xl">{project.description}</p>
+                            <h2 className="text-2xl md:text-3xl font-bold mb-2 leading-tight">{project.title}</h2>
+                            <p className="text-white/90 text-sm md:text-base max-w-full">{project.description}</p>
                         </div>
                         <button
                             onClick={onClose}
@@ -58,95 +72,98 @@ const ProjectDetailsModal = ({ project, onClose }) => {
                 </div>
 
                 {/* Scrollable Body */}
-                <div className="flex-1 overflow-y-auto bg-gray-50">
+                <div ref={scrollableRef} className="flex-1 overflow-y-auto bg-gray-50">
                     <div className="max-w-6xl mx-auto p-6 md:p-8 space-y-8">
 
-                        {/* Gallery Section */}
-                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
-                            <Swiper
-                                modules={[Autoplay, Pagination, Navigation]}
-                                spaceBetween={0}
-                                slidesPerView={1}
-                                autoplay={{
-                                    delay: 4000,
-                                    disableOnInteraction: false,
-                                }}
-                                pagination={{
-                                    clickable: true,
-                                    dynamicBullets: true
-                                }}
-                                navigation
-                                loop={true}
-                                className="w-full aspect-video md:aspect-[21/9]"
-                            >
-                                {project.images?.map((img, index) => (
-                                    <SwiperSlide key={index}>
-                                        <img
-                                            src={img}
-                                            alt={`${project.title} screenshot ${index + 1} `}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </div>
+                        {/* Two Column Layout */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                        {/* Content Grid */}
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            {/* Left Column: Images, Overview, Tech Stack */}
+                            <div className="space-y-6">
+                                {/* Gallery Section */}
+                                <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+                                    <Swiper
+                                        modules={[Autoplay, Pagination, Navigation]}
+                                        spaceBetween={0}
+                                        slidesPerView={1}
+                                        autoplay={{
+                                            delay: 4000,
+                                            disableOnInteraction: false,
+                                        }}
+                                        pagination={{
+                                            clickable: true,
+                                            dynamicBullets: true
+                                        }}
+                                        navigation
+                                        loop={true}
+                                        className="w-full aspect-video"
+                                    >
+                                        {project.images?.map((img, index) => (
+                                            <SwiperSlide key={index}>
+                                                <img
+                                                    src={img}
+                                                    alt={`${project.title} screenshot ${index + 1} `}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
+                                </div>
 
-                            {/* System Overview - Takes 2 columns */}
-                            <div className="lg:col-span-2 bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200">
-                                <div className="flex items-center gap-3 mb-4">
+                                {/* System Overview */}
+                                <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-1 h-8 bg-[#33A1E0] rounded-full"></div>
+                                        <h3 className="text-2xl font-bold text-[#626262]">System Overview</h3>
+                                    </div>
+                                    <p className="text-[#626262] leading-relaxed text-base md:text-lg">
+                                        {project.overview || project.description}
+                                    </p>
+                                </div>
+
+                                {/* Technologies */}
+                                <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#33A1E0]/20">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-1 h-8 bg-[#33A1E0] rounded-full"></div>
+                                        <h3 className="text-xl font-bold text-[#626262]">Tech Stack</h3>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.technologies?.map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className="px-4 py-2 bg-white text-[#33A1E0] text-sm font-bold rounded-full border-2 border-[#33A1E0]/30 shadow-sm hover:shadow-md hover:scale-105 hover:border-[#33A1E0] transition-all duration-200"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Column: Key Features */}
+                            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200">
+                                <div className="flex items-center gap-3 mb-6">
                                     <div className="w-1 h-8 bg-[#33A1E0] rounded-full"></div>
-                                    <h3 className="text-2xl font-bold text-[#626262]">System Overview</h3>
+                                    <h3 className="text-2xl font-bold text-[#626262]">Key Features</h3>
                                 </div>
-                                <p className="text-[#626262] leading-relaxed text-base md:text-lg">
-                                    {project.overview || project.description}
-                                </p>
-                            </div>
 
-                            {/* Technologies - Takes 1 column */}
-                            <div className=" rounded-2xl p-6 shadow-lg border border-[#33A1E0]/20">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-1 h-8 bg-[#33A1E0] rounded-full"></div>
-                                    <h3 className="text-xl font-bold text-[#626262]">Tech Stack</h3>
-                                </div>
-                                <div className="flex flex-wrap gap-2">
-                                    {project.technologies?.map((tech) => (
-                                        <span
-                                            key={tech}
-                                            className="px-4 py-2 bg-white text-[#33A1E0] text-sm font-bold rounded-full border-2 border-[#33A1E0]/30 shadow-sm hover:shadow-md hover:scale-105 hover:border-[#33A1E0] transition-all duration-200"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
+                                {project.features && project.features.length > 0 ? (
+                                    <div className="space-y-3">
+                                        {project.features.map((feature, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex items-start gap-3 p-4 rounded-xl bg-[#E0F7FA] border border-[#33A1E0]/20 hover:shadow-md hover:scale-[1.02] hover:border-[#33A1E0]/40 transition-all duration-200 group"
+                                            >
+                                                <CheckCircle className="w-5 h-5 text-[#33A1E0] mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                                                <span className="text-[#626262] font-medium text-sm leading-relaxed">{feature}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="text-center py-8 text-gray-400 italic">Feature list not available.</div>
+                                )}
                             </div>
                         </div>
-
-                        {/* Key Features */}
-                        <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-1 h-8 bg-[#33A1E0] rounded-full"></div>
-                                <h3 className="text-2xl font-bold text-[#626262]">Key Features</h3>
-                            </div>
-
-                            {project.features && project.features.length > 0 ? (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {project.features.map((feature, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-start gap-3 p-4 rounded-xl bg-[#E0F7FA] border border-[#33A1E0]/20 hover:shadow-md hover:scale-[1.02] hover:border-[#33A1E0]/40 transition-all duration-200 group"
-                                        >
-                                            <CheckCircle className="w-5 h-5 text-[#33A1E0] mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                                            <span className="text-[#626262] font-medium text-sm leading-relaxed">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="text-center py-8 text-gray-400 italic">Feature list not available.</div>
-                            )}
-                        </div> 
 
                         {/* Call to Action */}
                         <div className="flex justify-center md:justify-end pt-4">
