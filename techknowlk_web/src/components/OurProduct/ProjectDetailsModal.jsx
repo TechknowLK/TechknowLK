@@ -142,9 +142,26 @@ const ProjectDetailsModal = ({ project, onClose }) => {
 
                             {/* Right Column: Key Features */}
                             <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-1 h-8 bg-[#33A1E0] rounded-full"></div>
-                                    <h3 className="text-2xl font-bold text-[#626262]">Key Features</h3>
+                                <div className="flex items-center justify-between gap-3 mb-6">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1 h-8 bg-[#33A1E0] rounded-full"></div>
+                                        <h3 className="text-2xl font-bold text-[#626262]">Key Features</h3>
+                                    </div>
+
+                                    {/* View Live Project Button */}
+                                    {project.demoUrl && (
+                                        <button
+                                            onClick={() => window.open(project.demoUrl, '_blank', 'noopener,noreferrer')}
+                                            className="group relative px-6 py-3 bg-[#33A1E0] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-[#33A1E0]/30 transition-all duration-300 hover:scale-105 overflow-hidden"
+                                        >
+                                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                                            <div className="relative flex items-center gap-2">
+                                                <span className="hidden sm:inline">View Live Demo</span>
+                                                <span className="sm:hidden">Live Demo</span>
+                                                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                                            </div>
+                                        </button>
+                                    )}
                                 </div>
 
                                 {project.features && project.features.length > 0 ? (
@@ -163,17 +180,6 @@ const ProjectDetailsModal = ({ project, onClose }) => {
                                     <div className="text-center py-8 text-gray-400 italic">Feature list not available.</div>
                                 )}
                             </div>
-                        </div>
-
-                        {/* Call to Action */}
-                        <div className="flex justify-center md:justify-end pt-4">
-                            <button className="group relative px-8 py-4 bg-[#33A1E0] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-[#33A1E0]/30 transition-all duration-300 hover:scale-105 overflow-hidden">
-                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                                <div className="relative flex items-center gap-2">
-                                    <span>View Live Project</span>
-                                    <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-                                </div>
-                            </button>
                         </div>
 
                     </div>

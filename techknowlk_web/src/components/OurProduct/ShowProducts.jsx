@@ -114,6 +114,7 @@ const projects = [
     images: [tourism_01, tourism_02, tourism_03],
     technologies: ["React", "Node.js", "MongoDB"],
     category: "Software Solutions",
+    demoUrl: "https://tourinlanka.vercel.app/",
   },
 
 
@@ -158,6 +159,7 @@ const projects = [
     images: [computer_shop_01, computer_shop_02],
     technologies: ["React", "Vite", "Next.js"],
     category: "Software Solutions",
+    demoUrl: "https://p09demo.techknowlk.com/",
   },
   {
     id: 11,
