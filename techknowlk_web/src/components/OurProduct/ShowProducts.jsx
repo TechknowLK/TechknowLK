@@ -114,6 +114,7 @@ const projects = [
     images: [tourism_01, tourism_02, tourism_03],
     technologies: ["React", "Node.js", "MongoDB"],
     category: "Software Solutions",
+    demoUrl: "https://tourinlanka.vercel.app/",
   },
 
 
@@ -131,7 +132,7 @@ const projects = [
   },
   {
     id: 9,
-    title: "Arbitem mobile app",
+    title: "Bilingual Case Management Mobile App",
     description:
       "Arbitem is a mobile-based case management system designed to transform how loan-related legal cases are tracked and handled.",
     overview: "Arbitem revolutionizes legal case management for financial institutions. It provides a mobile-first interface for legal officers to track case progress, manage documentation, and communicate with clients. The system ensures all legal proceedings are documented and easily accessible.",
@@ -158,12 +159,13 @@ const projects = [
     images: [computer_shop_01, computer_shop_02],
     technologies: ["React", "Vite", "Next.js"],
     category: "Software Solutions",
+    demoUrl: "https://p09demo.techknowlk.com/",
   },
   {
     id: 11,
-    title: "LMS",
+    title: "Learning Management System (LMS)",
     description:
-      "Comprehensive Learning Management System for student progress tracking, course delivery, and simple administration.",
+      "Comprehensive Learning Management System for student progress tracking, course delivery, and simple administration. this system specially design for A/L teachers ",
     overview: "This LMS is a modern learning platform built specifically for the Sri Lankan A/L education system. It features a fully bilingual interface (Sinhala & English), so students learn comfortably in their preferred language. Powered by Next.js 16, React 19, and MySQL, the system delivers fast, secure, enterprise-level performance. Teachers can easily manage content using a visual, drag-and-drop system—no technical skills needed. More than just an LMS, it supports multiple institutes, smart timetabling, and a free-resources marketing system that helps attract new students through “try-before-you-buy” content.",
     features: [
       "Full bilingual support (English & Sinhala)",

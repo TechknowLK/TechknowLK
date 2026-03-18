@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: 'https://techknowlk.com'
+    origin: ['https://techknowlk.com', 'http://localhost:5173', 'http://127.0.0.1:5173']
 }));
 app.use(express.json());
 
@@ -17,9 +17,9 @@ const PORT = process.env.PORT || 3001;
 
 console.log('SMTP_HOST:', process.env.SMTP_HOST);
 
-app.get('/', (req, res) => res.json({ok: true, message: 'Email server is running'}));
+app.get('/api', (req, res) => res.json({ok: true, message: 'Email server is running'}));
 
-app.post('/send-email', async (req, res) => {
+app.post('/api/send-email', async (req, res) => {
     const {name, email, message, phone, service} = req.body;
     if (!name || !email || !message) {
         return res.status(400).json({error: 'name, email and message are required'});
