@@ -13,7 +13,8 @@ export const NavBar = () => {
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Service", path: "/services" },
-    { name: "Product", path: "/products" },
+    { name: "Projects", path: "/projects" },
+    { name: "Products", path: "/products" },
     { name: "Blogs", path: "/blogs" },
     { name: "Contact", path: "/contact" },
   ];

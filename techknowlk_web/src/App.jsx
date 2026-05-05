@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from './screens/Home';
 import { AboutUs } from './screens/AboutUs';
 import Services from './screens/Services';
+import Projects from './screens/Projects';
 import Products from './screens/Products';
+import ProductDetails from './screens/ProductDetails';
 import Blogs from './screens/Blogs';
 import Contact from './screens/Contact';
 import { NavBar } from './components/NavBar';
@@ -26,7 +28,9 @@ export const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<AboutUs />} />
         <Route path='/services' element={<Services />} />
+        <Route path='/projects' element={<Projects />} />
         <Route path='/products' element={<Products />} />
+        <Route path='/products/:id' element={<ProductDetails />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='*' element={<NotFound />} />
