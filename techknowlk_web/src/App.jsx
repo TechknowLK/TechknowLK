@@ -11,7 +11,7 @@ import Contact from './screens/Contact';
 import { NavBar } from './components/NavBar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-
+import CartDrawer from './components/CartDrawer';
 import NotFound from './screens/NotfoundPage';
 import SmoothScroll from './components/SmoothScroll';
 
@@ -24,6 +24,7 @@ export const App = () => {
       <SmoothScroll />
       <ScrollToTop />
       <NavBar />
+      <CartDrawer />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<AboutUs />} />

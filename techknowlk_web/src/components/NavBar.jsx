@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // modern icons
+import { Menu, X, ShoppingCart } from "lucide-react";
 import logo from "/assets/Img/logo02.png";
-  
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../lib/CartContext";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { cartCount, setIsCartOpen } = useCart();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -55,13 +56,33 @@ export const NavBar = () => {
           ))}
         </ul>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden text-white p-2 rounded-md hover:bg-white/10 transition"
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Right side actions */}
+        <div className="flex items-center gap-3">
+          {/* Cart Button */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative p-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200"
+            aria-label="Open cart"
+          >
+            <ShoppingCart className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span
+                className="absolute -top-1 -right-1 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-black text-white px-1"
+                style={{ background: 'linear-gradient(135deg, #33A1E0, #1e7ab8)', boxShadow: '0 2px 8px rgba(51,161,224,0.5)' }}
+              >
+                {cartCount > 99 ? '99+' : cartCount}
+              </span>
+            )}
+          </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden text-white p-2 rounded-md hover:bg-white/10 transition"
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
@@ -92,3 +113,4 @@ export const NavBar = () => {
     </nav>
   );
 };
+

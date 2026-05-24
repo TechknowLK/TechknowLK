@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import LogoutButton from '../components/LogoutButton';
-import { LayoutDashboard, Globe, Shield, Briefcase } from 'lucide-react';
+import { LayoutDashboard, Globe, Shield, Briefcase, ShoppingBag } from 'lucide-react';
 
 export default async function ProtectedLayout({ children }) {
   const cookieStore = await cookies();
@@ -29,7 +29,7 @@ export default async function ProtectedLayout({ children }) {
               <div className="hidden sm:flex sm:space-x-2">
                 <Link 
                   href="/admin/dashboard" 
-                  className="text-slate-900 bg-slate-100 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors duration-200"
+                  className="text-slate-500 hover:bg-slate-100 hover:text-slate-900 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors duration-200"
                 >
                   <LayoutDashboard className="w-4 h-4" />
                   Dashboard
@@ -47,6 +47,13 @@ export default async function ProtectedLayout({ children }) {
                 >
                   <Briefcase className="w-4 h-4" />
                   Shop
+                </Link>
+                <Link 
+                  href="/admin/orders" 
+                  className="text-slate-500 hover:bg-slate-100 hover:text-slate-900 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors duration-200"
+                >
+                  <ShoppingBag className="w-4 h-4" />
+                  Orders
                 </Link>
                 <Link 
                   href="/" 

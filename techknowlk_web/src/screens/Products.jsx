@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingCart, Search, Filter, Package, Eye, ChevronRight, Tag, DollarSign, X } from 'lucide-react';
+import { ShoppingCart, Search, Filter, Package, Eye, ChevronRight, Tag, DollarSign, X, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
+import { useCart } from '../lib/CartContext';
+import { toast } from 'react-toastify';
 
 import video from "/assets/Video/Hero.mp4";
 
 export default function Products() {
+  const { addToCart } = useCart();
+  const [addedIds, setAddedIds] = useState(new Set());
 
   const bgStyle = {
     backgroundImage:
@@ -66,6 +70,17 @@ export default function Products() {
     setSearchQuery('');
     const max = Math.max(...products.map(p => p.price));
     setPriceRange({ min: 0, max: max || 100000 });
+  };
+
+  const handleAddToCart = (e, product) => {
+    e.preventDefault(); // prevent Link navigation
+    e.stopPropagation();
+    addToCart(product, 1);
+    toast.success(`"${product.name}" added to cart!`, { autoClose: 2000 });
+    setAddedIds(prev => new Set([...prev, product.id]));
+    setTimeout(() => {
+      setAddedIds(prev => { const next = new Set(prev); next.delete(product.id); return next; });
+    }, 2500);
   };
 
   const vignetteStyle = {
@@ -287,8 +302,20 @@ export default function Products() {
                         <span className="text-sm font-bold text-slate-900 flex items-center gap-1">
                           Details <ChevronRight className="w-3 h-4 text-blue-600" />
                         </span>
-                        <button className="p-1.5 bg-blue-50 text-blue-600 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-all">
-                          <Eye className="w-4 h-4" />
+                        <button
+                          onClick={(e) => handleAddToCart(e, product)}
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+                          style={{
+                            background: addedIds.has(product.id) ? 'rgba(22,163,74,0.1)' : 'rgba(51,161,224,0.1)',
+                            color: addedIds.has(product.id) ? '#16a34a' : '#33A1E0',
+                            border: addedIds.has(product.id) ? '1px solid rgba(22,163,74,0.3)' : '1px solid rgba(51,161,224,0.2)',
+                          }}
+                        >
+                          {addedIds.has(product.id) ? (
+                            <><Check className="w-3.5 h-3.5" /> Added!</>
+                          ) : (
+                            <><ShoppingCart className="w-3.5 h-3.5" /> Add to Cart</>
+                          )}
                         </button>
                       </div>
                     </div>
