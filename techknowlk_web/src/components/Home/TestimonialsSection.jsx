@@ -41,7 +41,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card  rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)]   transition-all duration-500 px-10"
+              className="bg-card rounded-lg p-6 shadow-[10px_10px_25px_rgba(0,0,0,0.13)] transition-all duration-500 px-10 flex flex-col"
             >
               
               <div className="flex gap-1 mb-4">
@@ -56,12 +56,12 @@ const Testimonials = () => {
               </p>
 
               
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[#626262] flex items-center justify-center text-[#ffffff] font-bold">
+              <div className="flex items-center gap-3 mt-auto">
+                <div className="w-8 h-8 rounded-full text-sm bg-[#626262] flex items-center justify-center text-[#ffffff] font-bold flex-shrink-0">
                   {testimonial.name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
+                  <p className="font-semibold text-sm text-foreground">{testimonial.name}</p>
                   <p className="text-xs text-muted-foreground">{testimonial.company}</p>
                 </div>
               </div>
