@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "node server/index.js",
-    "admin:dev": "next dev -p 3000",
+    "admin:dev": "next dev --webpack -p 3000",
     "admin:build": "next build",
     "admin:start": "next start -p 3000"
   },
