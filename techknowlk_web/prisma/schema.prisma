@@ -119,19 +119,37 @@ model ShopProduct {
 }
 
 model Order {
-  id              Int      @id @default(autoincrement())
-  orderType       String   @db.VarChar(50) // "SINGLE" | "CART"
-  orderMethod     String   @db.VarChar(50) // "WHATSAPP" | "EMAIL"
-  customerName    String   @db.VarChar(255)
-  customerPhone   String   @db.VarChar(100)
-  customerEmail   String?  @db.VarChar(255)
-  customerAddress String   @db.Text
-  customerNote    String?  @db.Text
-  items           Json     // JSON: [{ name: string, quantity: number, price: number, brand?: string }]
+  id              Int       @id @default(autoincrement())
+  orderType       String    @db.VarChar(50) // "SINGLE" | "CART"
+  orderMethod     String    @db.VarChar(50) // "WHATSAPP" | "EMAIL"
+  customerId      Int?      // Link to customer if logged in
+  customer        Customer? @relation(fields: [customerId], references: [id])
+  customerName    String    @db.VarChar(255)
+  customerPhone   String    @db.VarChar(100)
+  customerEmail   String?   @db.VarChar(255)
+  customerAddress String    @db.Text
+  customerNote    String?   @db.Text
+  items           Json      // JSON: [{ name: string, quantity: number, price: number, brand?: string }]
   total           Float?
-  status          String   @default("PENDING") @db.VarChar(50) // "PENDING" | "COMPLETED" | "CANCELLED"
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  status          String    @default("PENDING") @db.VarChar(50) // "PENDING" | "COMPLETED" | "CANCELLED"
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 
   @@map("orders")
+}
+
+model Customer {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique @db.VarChar(255)
+  password   String   @db.VarChar(255)
+  name       String   @db.VarChar(255)
+  phone      String?  @db.VarChar(100)
+  address    String?  @db.Text
+  postalCode String?  @db.VarChar(20)
+  province   String?  @db.VarChar(100)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  orders     Order[]
+
+  @@map("customers")
 }
