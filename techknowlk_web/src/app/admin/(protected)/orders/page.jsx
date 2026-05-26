@@ -71,25 +71,46 @@ export default function AdminOrders() {
     return matchesSearch && matchesStatus && matchesMethod;
   });
 
+  const getStatusSelectClass = (status) => {
+    const base = "border rounded-xl px-3 py-2 text-xs font-bold outline-none transition-all cursor-pointer shadow-sm whitespace-nowrap";
+    switch (status) {
+      case 'DELIVERED':
+        return `${base} bg-green-50 text-green-700 border-green-200 hover:bg-green-100/70 focus:ring-2 focus:ring-green-500/20`;
+      case 'PREPARING':
+        return `${base} bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100/70 focus:ring-2 focus:ring-blue-500/20`;
+      case 'CANCELLED':
+        return `${base} bg-red-50 text-red-700 border-red-200 hover:bg-red-100/70 focus:ring-2 focus:ring-red-500/20`;
+      default:
+        return `${base} bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100/70 focus:ring-2 focus:ring-amber-500/20`;
+    }
+  };
+
   const getStatusBadge = (status) => {
     switch (status) {
-      case 'COMPLETED':
+      case 'DELIVERED':
         return (
-          <span className="flex items-center gap-1 bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs font-bold border border-green-200 uppercase tracking-wider">
+          <span className="flex items-center gap-1 bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs font-bold border border-green-200 uppercase tracking-wider whitespace-nowrap">
             <Check className="w-3.5 h-3.5" />
-            Completed
+            Delivered
+          </span>
+        );
+      case 'PREPARING':
+        return (
+          <span className="flex items-center gap-1 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold border border-blue-200 uppercase tracking-wider whitespace-nowrap">
+            <ShoppingBag className="w-3.5 h-3.5" />
+            Stock Checked & Preparing
           </span>
         );
       case 'CANCELLED':
         return (
-          <span className="flex items-center gap-1 bg-red-50 text-red-700 px-3 py-1 rounded-full text-xs font-bold border border-red-200 uppercase tracking-wider">
+          <span className="flex items-center gap-1 bg-red-50 text-red-700 px-3 py-1 rounded-full text-xs font-bold border border-red-200 uppercase tracking-wider whitespace-nowrap">
             <X className="w-3.5 h-3.5" />
             Cancelled
           </span>
         );
       default:
         return (
-          <span className="flex items-center gap-1 bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-xs font-bold border border-amber-200 uppercase tracking-wider">
+          <span className="flex items-center gap-1 bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-xs font-bold border border-amber-200 uppercase tracking-wider whitespace-nowrap">
             <Clock className="w-3.5 h-3.5" />
             Pending
           </span>
@@ -100,14 +121,14 @@ export default function AdminOrders() {
   const getMethodBadge = (method) => {
     if (method === 'WHATSAPP') {
       return (
-        <span className="flex items-center gap-1.5 bg-green-100/70 text-green-800 px-2.5 py-1 rounded-lg text-xs font-semibold">
+        <span className="flex items-center gap-1.5 bg-green-100/70 text-green-800 px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap">
           <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
           WhatsApp
         </span>
       );
     }
     return (
-      <span className="flex items-center gap-1.5 bg-blue-100/70 text-blue-800 px-2.5 py-1 rounded-lg text-xs font-semibold">
+      <span className="flex items-center gap-1.5 bg-blue-100/70 text-blue-800 px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap">
         <Mail className="w-3.5 h-3.5 text-blue-500" />
         Email
       </span>
@@ -117,13 +138,13 @@ export default function AdminOrders() {
   const getTypeBadge = (type) => {
     if (type === 'CART') {
       return (
-        <span className="bg-purple-100 text-purple-800 px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wide">
+        <span className="bg-purple-100 text-purple-800 px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wide whitespace-nowrap">
           🛒 Cart
         </span>
       );
     }
     return (
-      <span className="bg-cyan-100 text-cyan-800 px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wide">
+      <span className="bg-cyan-100 text-cyan-800 px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wide whitespace-nowrap">
         📦 Single
       </span>
     );
@@ -160,7 +181,7 @@ export default function AdminOrders() {
         <div className="flex flex-wrap gap-3 w-full md:w-auto">
           {/* Status filter */}
           <div className="flex bg-slate-100 p-1 rounded-2xl gap-1">
-            {['ALL', 'PENDING', 'COMPLETED', 'CANCELLED'].map((st) => (
+            {['ALL', 'PENDING', 'PREPARING', 'DELIVERED', 'CANCELLED'].map((st) => (
               <button
                 key={st}
                 onClick={() => setStatusFilter(st)}
@@ -168,7 +189,7 @@ export default function AdminOrders() {
                   statusFilter === st ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
-                {st}
+                {st === 'PREPARING' ? 'PREPARING' : st}
               </button>
             ))}
           </div>
@@ -206,19 +227,26 @@ export default function AdminOrders() {
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
                   <th className="w-10"></th>
-                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm">Order ID</th>
-                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm">Customer</th>
-                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm">Type / Method</th>
-                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm">Date</th>
-                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm">Total</th>
-                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm">Status</th>
-                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm text-right">Actions</th>
+                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm whitespace-nowrap">Order ID</th>
+                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm whitespace-nowrap">Customer</th>
+                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm whitespace-nowrap">Type / Method</th>
+                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm whitespace-nowrap">Date</th>
+                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm whitespace-nowrap">Total</th>
+                  <th className="px-6 py-5 font-semibold text-slate-900 text-sm text-right whitespace-nowrap">Status / Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-slate-700">
                 {filteredOrders.map((order) => {
                   const isExpanded = expandedOrder === order.id;
-                  const formattedDate = new Date(order.createdAt).toLocaleString('en-LK', { timeZone: 'Asia/Colombo' });
+                  const formattedDate = new Date(order.createdAt).toLocaleString('en-LK', { 
+                    timeZone: 'Asia/Colombo',
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true 
+                  });
 
                   // Safe items parse
                   let itemsList = [];
@@ -237,57 +265,37 @@ export default function AdminOrders() {
                         <td className="pl-6 py-5 text-center">
                           {isExpanded ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
                         </td>
-                        <td className="px-6 py-5 font-bold text-slate-900">
+                        <td className="px-6 py-5 font-bold text-slate-500 text-xs whitespace-nowrap tracking-wide">
                           #TKLK-{1000 + order.id}
                         </td>
-                        <td className="px-6 py-5">
+                        <td className="px-6 py-5 whitespace-nowrap">
                           <div className="font-semibold text-slate-900">{order.customerName}</div>
                           <div className="text-xs text-slate-500 font-medium mt-0.5">{order.customerPhone}</div>
                         </td>
-                        <td className="px-6 py-5">
-                          <div className="flex gap-2 items-center">
+                        <td className="px-6 py-5 whitespace-nowrap">
+                          <div className="flex gap-2 items-center flex-nowrap">
                             {getTypeBadge(order.orderType)}
                             {getMethodBadge(order.orderMethod)}
                           </div>
                         </td>
-                        <td className="px-6 py-5 text-xs font-semibold text-slate-500">
+                        <td className="px-6 py-5 text-xs font-semibold text-slate-500 whitespace-nowrap">
                           {formattedDate}
                         </td>
-                        <td className="px-6 py-5 font-black text-slate-900">
+                        <td className="px-6 py-5 font-black text-slate-900 whitespace-nowrap">
                           {order.total ? `LKR ${order.total.toLocaleString()}` : 'N/A'}
                         </td>
-                        <td className="px-6 py-5">
-                          {getStatusBadge(order.status)}
-                        </td>
-                        <td className="px-6 py-5 text-right" onClick={e => e.stopPropagation()}>
-                          <div className="flex justify-end gap-1.5">
-                            {order.status !== 'COMPLETED' && (
-                              <button
-                                title="Mark as Completed"
-                                onClick={() => handleStatusUpdate(order.id, 'COMPLETED')}
-                                className="p-2 text-green-600 bg-green-50 hover:bg-green-100 rounded-xl transition-all"
-                              >
-                                <Check className="w-4 h-4" />
-                              </button>
-                            )}
-                            {order.status !== 'CANCELLED' && (
-                              <button
-                                title="Cancel Order"
-                                onClick={() => handleStatusUpdate(order.id, 'CANCELLED')}
-                                className="p-2 text-red-600 bg-red-50 hover:bg-red-100 rounded-xl transition-all"
-                              >
-                                <X className="w-4 h-4" />
-                              </button>
-                            )}
-                            {order.status !== 'PENDING' && (
-                              <button
-                                title="Set to Pending"
-                                onClick={() => handleStatusUpdate(order.id, 'PENDING')}
-                                className="p-2 text-amber-600 bg-amber-50 hover:bg-amber-100 rounded-xl transition-all"
-                              >
-                                <Clock className="w-4 h-4" />
-                              </button>
-                            )}
+                        <td className="px-6 py-5 text-right whitespace-nowrap" onClick={e => e.stopPropagation()}>
+                          <div className="flex justify-end">
+                            <select
+                              value={order.status}
+                              onChange={(e) => handleStatusUpdate(order.id, e.target.value)}
+                              className={getStatusSelectClass(order.status)}
+                            >
+                              <option value="PENDING" className="bg-white text-slate-700 font-semibold">Pending</option>
+                              <option value="PREPARING" className="bg-white text-slate-700 font-semibold">Stock Checked & Preparing</option>
+                              <option value="DELIVERED" className="bg-white text-slate-700 font-semibold">Delivered</option>
+                              <option value="CANCELLED" className="bg-white text-slate-700 font-semibold">Cancelled</option>
+                            </select>
                           </div>
                         </td>
                       </tr>
@@ -295,7 +303,7 @@ export default function AdminOrders() {
                       {/* Expandable Order Details Card */}
                       {isExpanded && (
                         <tr>
-                          <td colSpan="8" className="bg-slate-50/40 px-8 py-6 border-b border-slate-200">
+                          <td colSpan="7" className="bg-slate-50/40 px-8 py-6 border-b border-slate-200">
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-in slide-in-from-top-2 duration-300">
                               
                               {/* Customer Box */}
@@ -364,7 +372,9 @@ export default function AdminOrders() {
                                     {itemsList.map((item, idx) => (
                                       <div key={idx} className="flex justify-between items-center bg-slate-50 p-2.5 rounded-xl border border-slate-100">
                                         <div className="min-w-0 pr-2">
-                                          <p className="text-xs font-bold text-slate-800 truncate">{item.name}</p>
+                                          <p className="text-xs font-bold text-slate-800 truncate">
+                                            {item.name} {item.id && <span className="text-slate-400 font-semibold text-[10px] ml-1">(ID: {item.id})</span>}
+                                          </p>
                                           <p className="text-[10px] font-semibold text-slate-400 mt-0.5">
                                             Qty: {item.quantity} {item.brand ? `• Brand: ${item.brand}` : ''}
                                           </p>
