@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, User as UserIcon } from "lucide-react";
 import logo from "/assets/Img/logo02.png";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../lib/CartContext";
+import { useAuth } from "../lib/AuthContext";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { cartCount, setIsCartOpen } = useCart();
+  const { customer } = useAuth();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -75,6 +77,21 @@ export const NavBar = () => {
             )}
           </button>
 
+          {/* User Profile Button */}
+          <button
+            onClick={() => navigate(customer ? "/profile" : "/login")}
+            className="p-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 flex items-center gap-1.5"
+            aria-label="Profile"
+            title={customer ? `Logged in as ${customer.name}` : "Login / Register"}
+          >
+            <UserIcon className="w-5 h-5 text-gray-300 group-hover:text-white" />
+            {customer && (
+              <span className="hidden sm:inline text-xs font-semibold text-gray-300 max-w-[80px] truncate">
+                {customer.name.split(" ")[0]}
+              </span>
+            )}
+          </button>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -108,6 +125,18 @@ export const NavBar = () => {
               </NavLink>
             </li>
           ))}
+          <li onClick={() => setMenuOpen(false)}>
+            <NavLink
+              to={customer ? "/profile" : "/login"}
+              className={({ isActive }) =>
+                `block px-4 py-2 text-lg font-medium transition ${
+                  isActive ? "text-[#33A1E0]" : "text-gray-300 hover:text-white"
+                }`
+              }
+            >
+              {customer ? "My Profile" : "Login / Register"}
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
