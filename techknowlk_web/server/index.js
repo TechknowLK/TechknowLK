@@ -5,6 +5,8 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
 
@@ -114,21 +116,23 @@ app.post('/api/send-email', async (req, res) => {
 });
 
 app.post('/api/send-order-email', async (req, res) => {
-    const { name, email, phone, address, note, productName, productBrand, quantity, total } = req.body;
+    const { name, email, phone, address, note, productName, productId, productBrand, quantity, total } = req.body;
 
-    if (!name || !phone || !address || !productName) {
-        return res.status(400).json({ error: 'name, phone, address and productName are required' });
+    if (!name || !phone || !address || !productName || !productId) {
+        return res.status(400).json({ error: 'name, phone, address, productName and productId are required' });
     }
 
     try {
         // Save order to database
         const parsedTotal = total ? parseFloat(total.replace(/,/g, '')) : null;
         const parsedPrice = parsedTotal ? parsedTotal / Number(quantity) : 0;
+        const customerId = getOptionalCustomerId(req);
         
         await prisma.order.create({
             data: {
                 orderType: 'SINGLE',
                 orderMethod: 'EMAIL',
+                customerId: customerId,
                 customerName: name,
                 customerPhone: phone,
                 customerEmail: email || null,
@@ -136,6 +140,7 @@ app.post('/api/send-order-email', async (req, res) => {
                 customerNote: note || null,
                 items: [
                     {
+                        id: Number(productId),
                         name: productName,
                         quantity: Number(quantity),
                         price: parsedPrice,
@@ -164,8 +169,8 @@ app.post('/api/send-order-email', async (req, res) => {
         const mailOptions = {
             from,
             to,
-            subject: `🛒 New Order: ${productName} — from ${name}`,
-            text: `New Order Received\n\nProduct: ${productName}\nBrand: ${productBrand || '-'}\nQuantity: ${quantity}\nTotal: ${total ? 'LKR ' + total : 'N/A'}\n\nCustomer Details:\nName: ${name}\nEmail: ${email || '-'}\nPhone: ${phone}\nAddress: ${address}\nNote: ${note || '-'}\n\nOrder Date: ${orderDate}`,
+            subject: `🛒 New Order: ${productName} (ID: ${productId}) — from ${name}`,
+            text: `New Order Received\n\nProduct: ${productName}\nID: ${productId}\nBrand: ${productBrand || '-'}\nQuantity: ${quantity}\nTotal: ${total ? 'LKR ' + total : 'N/A'}\n\nCustomer Details:\nName: ${name}\nEmail: ${email || '-'}\nPhone: ${phone}\nAddress: ${address}\nNote: ${note || '-'}\n\nOrder Date: ${orderDate}`,
             html: `
 <div style="font-family:'Segoe UI',Roboto,Arial,sans-serif;background:#f0f6fb;padding:40px 0;">
   <div style="max-width:600px;margin:auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(1,42,67,0.12);">
@@ -190,7 +195,7 @@ app.post('/api/send-order-email', async (req, res) => {
         <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
             <td style="padding:6px 0;font-weight:600;color:#4a6a7c;font-size:13px;width:120px;">Product</td>
-            <td style="padding:6px 0;color:#012A43;font-weight:700;font-size:14px;">${productName}</td>
+            <td style="padding:6px 0;color:#012A43;font-weight:700;font-size:14px;">${productName} <span style="color:#7a9ab0;font-size:12px;font-weight:normal;">(ID: ${productId})</span></td>
           </tr>
           ${productBrand ? `<tr><td style="padding:6px 0;font-weight:600;color:#4a6a7c;font-size:13px;">Brand</td><td style="padding:6px 0;color:#012A43;font-size:13px;">${productBrand}</td></tr>` : ''}
           <tr>
@@ -252,17 +257,20 @@ app.post('/api/send-cart-order-email', async (req, res) => {
     try {
         // Save order to database
         const parsedTotal = total ? parseFloat(total.replace(/,/g, '')) : null;
+        const customerId = getOptionalCustomerId(req);
         
         await prisma.order.create({
             data: {
                 orderType: 'CART',
                 orderMethod: 'EMAIL',
+                customerId: customerId,
                 customerName: name,
                 customerPhone: phone,
                 customerEmail: email || null,
                 customerAddress: address,
                 customerNote: note || null,
                 items: items.map(item => ({
+                    id: Number(item.id),
                     name: item.name,
                     quantity: Number(item.quantity),
                     price: Number(item.price),
@@ -293,7 +301,7 @@ app.post('/api/send-cart-order-email', async (req, res) => {
             const itemPrice = item.price > 0 ? `LKR ${item.price.toLocaleString()}` : 'N/A';
             return `
               <tr style="border-bottom:1px solid #e2ecf4;">
-                <td style="padding:12px 0;color:#012A43;font-size:13px;font-weight:600;">${item.name}</td>
+                <td style="padding:12px 0;color:#012A43;font-size:13px;font-weight:600;">${item.name} <span style="color:#7a9ab0;font-size:11px;font-weight:normal;">(ID: ${item.id})</span></td>
                 <td style="padding:12px 0;color:#4a6a7c;font-size:13px;text-align:center;">${itemPrice}</td>
                 <td style="padding:12px 0;color:#4a6a7c;font-size:13px;text-align:center;">${item.quantity}</td>
                 <td style="padding:12px 0;color:#33A1E0;font-size:13px;font-weight:700;text-align:right;">${itemSubtotal}</td>
@@ -389,6 +397,39 @@ app.post('/api/send-cart-order-email', async (req, res) => {
     }
 });
 
+const JWT_SECRET = process.env.JWT_SECRET || 'techknowlk_jwt_customer_secret_key_12345';
+
+// Optional helper to check if customer is logged in without blocking guest checkout
+const getOptionalCustomerId = (req) => {
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+        const token = authHeader.split(' ')[1];
+        try {
+            const decoded = jwt.verify(token, JWT_SECRET);
+            return decoded.id;
+        } catch (err) {
+            // Ignore error for optional/guest checkout
+        }
+    }
+    return null;
+};
+
+// Middleware to require customer authentication
+const authenticateCustomer = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ error: 'Access denied. No token provided.' });
+    }
+    const token = authHeader.split(' ')[1];
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        req.customer = decoded;
+        next();
+    } catch (err) {
+        return res.status(401).json({ error: 'Invalid or expired token.' });
+    }
+};
+
 app.post('/api/save-order', async (req, res) => {
     const { orderType, orderMethod, customerName, customerPhone, customerEmail, customerAddress, customerNote, items, total } = req.body;
 
@@ -398,11 +439,13 @@ app.post('/api/save-order', async (req, res) => {
 
     try {
         const parsedTotal = total ? parseFloat(total.toString().replace(/,/g, '')) : null;
+        const customerId = getOptionalCustomerId(req);
         
         const order = await prisma.order.create({
             data: {
                 orderType,
                 orderMethod,
+                customerId: customerId,
                 customerName,
                 customerPhone,
                 customerEmail: customerEmail || null,
@@ -422,6 +465,176 @@ app.post('/api/save-order', async (req, res) => {
     } catch (err) {
         console.error('Error saving order to DB:', err);
         return res.status(500).json({ error: 'Failed to save order to database', details: err.message });
+    }
+});
+
+// ── CUSTOMER SIGNUP ──
+app.post('/api/customer/signup', async (req, res) => {
+    const { name, email, password, phone, address, postalCode, province } = req.body;
+
+    if (!name || !email || !password) {
+        return res.status(400).json({ error: 'Name, email, and password are required' });
+    }
+
+    try {
+        const existing = await prisma.customer.findUnique({ where: { email } });
+        if (existing) {
+            return res.status(400).json({ error: 'Email already registered' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const customer = await prisma.customer.create({
+            data: {
+                name,
+                email,
+                password: hashedPassword,
+                phone: phone || null,
+                address: address || null,
+                postalCode: postalCode || null,
+                province: province || null
+            }
+        });
+
+        const token = jwt.sign({ id: customer.id, email: customer.email }, JWT_SECRET, { expiresIn: '7d' });
+
+        return res.json({
+            success: true,
+            token,
+            customer: {
+                id: customer.id,
+                name: customer.name,
+                email: customer.email,
+                phone: customer.phone,
+                address: customer.address,
+                postalCode: customer.postalCode,
+                province: customer.province
+            }
+        });
+    } catch (err) {
+        console.error('Signup error:', err);
+        return res.status(500).json({ error: 'Failed to create account', details: err.message });
+    }
+});
+
+// ── CUSTOMER LOGIN ──
+app.post('/api/customer/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ error: 'Email and password are required' });
+    }
+
+    try {
+        const customer = await prisma.customer.findUnique({ where: { email } });
+        if (!customer) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
+
+        const isMatch = await bcrypt.compare(password, customer.password);
+        if (!isMatch) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
+
+        const token = jwt.sign({ id: customer.id, email: customer.email }, JWT_SECRET, { expiresIn: '7d' });
+
+        return res.json({
+            success: true,
+            token,
+            customer: {
+                id: customer.id,
+                name: customer.name,
+                email: customer.email,
+                phone: customer.phone,
+                address: customer.address,
+                postalCode: customer.postalCode,
+                province: customer.province
+            }
+        });
+    } catch (err) {
+        console.error('Login error:', err);
+        return res.status(500).json({ error: 'Failed to login', details: err.message });
+    }
+});
+
+// ── CUSTOMER PROFILE (GET) ──
+app.get('/api/customer/profile', authenticateCustomer, async (req, res) => {
+    try {
+        const customer = await prisma.customer.findUnique({
+            where: { id: req.customer.id }
+        });
+
+        if (!customer) {
+            return res.status(404).json({ error: 'Customer not found' });
+        }
+
+        return res.json({
+            success: true,
+            customer: {
+                id: customer.id,
+                name: customer.name,
+                email: customer.email,
+                phone: customer.phone,
+                address: customer.address,
+                postalCode: customer.postalCode,
+                province: customer.province
+            }
+        });
+    } catch (err) {
+        console.error('Get profile error:', err);
+        return res.status(500).json({ error: 'Failed to fetch profile' });
+    }
+});
+
+// ── CUSTOMER PROFILE (PUT) ──
+app.put('/api/customer/profile', authenticateCustomer, async (req, res) => {
+    const { name, phone, address, postalCode, province } = req.body;
+
+    try {
+        const updated = await prisma.customer.update({
+            where: { id: req.customer.id },
+            data: {
+                name: name || undefined,
+                phone: phone !== undefined ? phone : null,
+                address: address !== undefined ? address : null,
+                postalCode: postalCode !== undefined ? postalCode : null,
+                province: province !== undefined ? province : null
+            }
+        });
+
+        return res.json({
+            success: true,
+            customer: {
+                id: updated.id,
+                name: updated.name,
+                email: updated.email,
+                phone: updated.phone,
+                address: updated.address,
+                postalCode: updated.postalCode,
+                province: updated.province
+            }
+        });
+    } catch (err) {
+        console.error('Update profile error:', err);
+        return res.status(500).json({ error: 'Failed to update profile' });
+    }
+});
+
+// ── CUSTOMER ORDER HISTORY (GET) ──
+app.get('/api/customer/orders', authenticateCustomer, async (req, res) => {
+    try {
+        const orders = await prisma.order.findMany({
+            where: { customerId: req.customer.id },
+            orderBy: { createdAt: 'desc' }
+        });
+
+        return res.json({
+            success: true,
+            orders
+        });
+    } catch (err) {
+        console.error('Get customer orders error:', err);
+        return res.status(500).json({ error: 'Failed to fetch order history' });
     }
 });
 
