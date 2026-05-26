@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { X, Phone, User, MapPin, Package, Minus, Plus, CheckCircle2, AlertCircle, Mail, MessageSquare } from 'lucide-react';
 import { toast } from 'react-toastify';
+import { useAuth } from '../lib/AuthContext';
 
 export default function OrderModal({ product, isOpen, onClose }) {
+  const { customer, token } = useAuth();
   const [tab, setTab] = useState('whatsapp'); // 'whatsapp' | 'email'
   const [quantity, setQuantity] = useState(1);
   const [form, setForm] = useState({ name: '', email: '', phone: '', address: '', note: '' });
@@ -14,13 +16,21 @@ export default function OrderModal({ product, isOpen, onClose }) {
   useEffect(() => {
     if (isOpen) {
       setQuantity(1);
-      setForm({ name: '', email: '', phone: '', address: '', note: '' });
+      setForm({
+        name: customer ? customer.name : '',
+        email: customer ? customer.email : '',
+        phone: customer ? customer.phone || '' : '',
+        address: customer 
+          ? `${customer.address || ''}${customer.province ? ', ' + customer.province : ''}${customer.postalCode ? ' - ' + customer.postalCode : ''}` 
+          : '',
+        note: ''
+      });
       setErrors({});
       setSubmitted(false);
       setSending(false);
       setTab('whatsapp');
     }
-  }, [isOpen]);
+  }, [isOpen, customer]);
 
   // Lock scroll
   useEffect(() => {
@@ -53,9 +63,13 @@ export default function OrderModal({ product, isOpen, onClose }) {
     setSending(true);
 
     try {
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
       await fetch('/api/save-order', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           orderType: 'SINGLE',
           orderMethod: 'WHATSAPP',
@@ -66,6 +80,7 @@ export default function OrderModal({ product, isOpen, onClose }) {
           customerNote: form.note || null,
           items: [
             {
+              id: product.id,
               name: product.name,
               quantity,
               price: product.price,
@@ -82,7 +97,7 @@ export default function OrderModal({ product, isOpen, onClose }) {
     const totalLine = total ? `\n💰 Total: LKR ${total.toLocaleString()}` : '';
     const msg =
       `Hello TechKnowLK! I'd like to place an order:\n\n` +
-      `📦 Product: ${product.name}\n` +
+      `📦 Product: ${product.name} (ID: ${product.id})\n` +
       `🔢 Quantity: ${quantity}${totalLine}\n\n` +
       `👤 Name: ${form.name}\n` +
       `📞 Phone: ${form.phone}\n` +
@@ -103,9 +118,13 @@ export default function OrderModal({ product, isOpen, onClose }) {
     setSending(true);
 
     try {
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
       const res = await fetch('/api/send-order-email', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           name: form.name,
           email: form.email || null,
@@ -113,6 +132,7 @@ export default function OrderModal({ product, isOpen, onClose }) {
           address: form.address,
           note: form.note || null,
           productName: product.name,
+          productId: product.id,
           productBrand: product.brand?.name || null,
           quantity,
           total: total ? total.toLocaleString() : null,
