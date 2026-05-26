@@ -49,6 +49,7 @@ const ProjectDetailsModal = ({ project, onClose }) => {
             <div
                 className="relative w-full max-w-6xl max-h-[92vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden transform transition-all duration-300 animate-slideUp"
                 onClick={(e) => e.stopPropagation()}
+                data-lenis-prevent
             >
                 {/* Header with Brand Color */}
                 <div className="relative bg-[#33A1E0] px-6 py-3 text-white">
