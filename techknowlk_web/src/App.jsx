@@ -14,29 +14,38 @@ import ScrollToTop from './components/ScrollToTop';
 import CartDrawer from './components/CartDrawer';
 import NotFound from './screens/NotfoundPage';
 import SmoothScroll from './components/SmoothScroll';
+import { AuthProvider } from './lib/AuthContext';
+import Login from './screens/Login';
+import Register from './screens/Register';
+import Profile from './screens/Profile';
 
 import { ToastContainer } from "react-toastify";
 
 export const App = () => {
   return (
-    <Router>
-      <ToastContainer position="bottom-center" theme="colored" />
-      <SmoothScroll />
-      <ScrollToTop />
-      <NavBar />
-      <CartDrawer />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<AboutUs />} />
-        <Route path='/services' element={<Services />} />
-        <Route path='/projects' element={<Projects />} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/products/:id' element={<ProductDetails />} />
-        <Route path='/blogs' element={<Blogs />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-      <Footer/>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <ToastContainer position="bottom-center" theme="colored" />
+        <SmoothScroll />
+        <ScrollToTop />
+        <NavBar />
+        <CartDrawer />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<AboutUs />} />
+          <Route path='/services' element={<Services />} />
+          <Route path='/projects' element={<Projects />} />
+          <Route path='/products' element={<Products />} />
+          <Route path='/products/:id' element={<ProductDetails />} />
+          <Route path='/blogs' element={<Blogs />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        <Footer/>
+      </Router>
+    </AuthProvider>
   )
 }
