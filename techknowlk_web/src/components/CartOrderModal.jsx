@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { X, Phone, User, MapPin, Package, CheckCircle2, AlertCircle, Mail, ShoppingCart } from 'lucide-react';
 import { toast } from 'react-toastify';
+import { useAuth } from '../lib/AuthContext';
 
 export default function CartOrderModal({ cartItems, cartTotal, isOpen, onClose, onClearCart }) {
+  const { customer, token } = useAuth();
   const [tab, setTab] = useState('whatsapp'); // 'whatsapp' | 'email'
   const [form, setForm] = useState({ name: '', email: '', phone: '', address: '', note: '' });
   const [errors, setErrors] = useState({});
@@ -12,13 +14,21 @@ export default function CartOrderModal({ cartItems, cartTotal, isOpen, onClose, 
   // Reset on open
   useEffect(() => {
     if (isOpen) {
-      setForm({ name: '', email: '', phone: '', address: '', note: '' });
+      setForm({
+        name: customer ? customer.name : '',
+        email: customer ? customer.email : '',
+        phone: customer ? customer.phone || '' : '',
+        address: customer 
+          ? `${customer.address || ''}${customer.province ? ', ' + customer.province : ''}${customer.postalCode ? ' - ' + customer.postalCode : ''}` 
+          : '',
+        note: ''
+      });
       setErrors({});
       setSubmitted(false);
       setSending(false);
       setTab('whatsapp');
     }
-  }, [isOpen]);
+  }, [isOpen, customer]);
 
   // Lock scroll
   useEffect(() => {
@@ -49,9 +59,13 @@ export default function CartOrderModal({ cartItems, cartTotal, isOpen, onClose, 
     setSending(true);
 
     try {
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
       await fetch('/api/save-order', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           orderType: 'CART',
           orderMethod: 'WHATSAPP',
@@ -61,6 +75,7 @@ export default function CartOrderModal({ cartItems, cartTotal, isOpen, onClose, 
           customerAddress: form.address,
           customerNote: form.note || null,
           items: cartItems.map(item => ({
+            id: item.id,
             name: item.name,
             quantity: item.quantity,
             price: item.price
@@ -73,7 +88,7 @@ export default function CartOrderModal({ cartItems, cartTotal, isOpen, onClose, 
     }
 
     const itemsLines = cartItems.map(item =>
-      `• ${item.name} (Qty: ${item.quantity})${item.price > 0 ? ` — LKR ${(item.price * item.quantity).toLocaleString()}` : ''}`
+      `• ${item.name} (ID: ${item.id}) (Qty: ${item.quantity})${item.price > 0 ? ` — LKR ${(item.price * item.quantity).toLocaleString()}` : ''}`
     );
     const totalLine = cartTotal > 0 ? `\n💰 Grand Total: LKR ${cartTotal.toLocaleString()}` : '';
 
@@ -101,9 +116,13 @@ export default function CartOrderModal({ cartItems, cartTotal, isOpen, onClose, 
     setSending(true);
 
     try {
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
       const res = await fetch('/api/send-cart-order-email', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           name: form.name,
           email: form.email || null,
@@ -111,6 +130,7 @@ export default function CartOrderModal({ cartItems, cartTotal, isOpen, onClose, 
           address: form.address,
           note: form.note || null,
           items: cartItems.map(item => ({
+            id: item.id,
             name: item.name,
             quantity: item.quantity,
             price: item.price
