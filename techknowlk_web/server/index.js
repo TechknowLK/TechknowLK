@@ -178,7 +178,7 @@ app.post('/api/send-order-email', async (req, res) => {
     <!-- Header -->
     <div style="background:linear-gradient(135deg,#012A43,#154D71);padding:28px 32px;">
       <div style="display:flex;align-items:center;gap:12px;">
-        <div style="background:rgba(51,161,224,0.2);border-radius:12px;padding:10px;display:inline-block;">
+        <div style="background:rgba(51,161,224,0.2);border-radius:12px;padding:10px;display:inline-block; margin-left:5px;">
           <span style="font-size:24px;">🛒</span>
         </div>
         <div>
@@ -232,8 +232,8 @@ app.post('/api/send-order-email', async (req, res) => {
 
     <!-- Footer -->
     <div style="padding:24px 32px;margin-top:24px;background:#f0f6fb;text-align:center;">
-      <p style="margin:0;font-size:12px;color:#7a9ab0;">This order was placed via <strong>TechKnowLK Website</strong></p>
-      <p style="margin:6px 0 0;font-size:11px;color:#a0b8c8;">&copy; ${new Date().getFullYear()} Techknow Lanka</p>
+      <p style="margin:0;font-size:12px;color:#7a9ab0;">This order was placed via <strong>TechKnowLK</strong></p>
+      <p style="margin:6px 0 0;font-size:11px;color:#a0b8c8;">&copy; ${new Date().getFullYear()} Techknow Lanka Engineers. All Rights Reserved.</p>
     </div>
   </div>
 </div>`,
