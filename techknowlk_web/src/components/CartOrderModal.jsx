@@ -255,7 +255,7 @@ export default function CartOrderModal({ cartItems, cartTotal, isOpen, onClose, 
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-white font-bold text-2xl">
-                  {isEmail ? 'Order Email Sent! 📧' : 'Order Sent! 🎉'}
+                  {isEmail ? 'Order Email Sent! 📧' : 'Order Sent! '}
                 </h3>
                 <p className="text-gray-400 text-sm max-w-xs leading-relaxed">
                   {isEmail
