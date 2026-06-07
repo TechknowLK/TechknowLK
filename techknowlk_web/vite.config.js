@@ -9,8 +9,32 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      '/api': {
+      '/api/send-order-email': {
         target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      '/api/send-cart-order-email': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      '/api/save-order': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      '/api/customer': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      '/api/projects': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+      '/api/auth': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+      '/api': {
+        target: 'http://localhost:3000',
         changeOrigin: true,
       }
     }

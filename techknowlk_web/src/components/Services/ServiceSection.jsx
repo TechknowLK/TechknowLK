@@ -73,7 +73,7 @@ export default function ServiceSection() {
   const navigate = useNavigate();
 
   const handleReadMore = (category) => {
-    navigate(`/products?category=${encodeURIComponent(category)}`);
+    navigate(`/projects?category=${encodeURIComponent(category)}`);
   };
 
   return (
@@ -85,7 +85,7 @@ export default function ServiceSection() {
         return (
           <div
             key={index}
-            className={`flex flex-col md:flex-row items-center gap-10 ${
+            className={`flex flex-col md:flex-row items-center md:items-start gap-10 ${
               isReversed ? "md:flex-row-reverse" : ""
             }`}
           >
@@ -134,7 +134,7 @@ export default function ServiceSection() {
             </div>
 
             {/* Right Image */}
-            <div className="flex justify-center flex-1 " data-aos="fade-left" data-aos-delay="100">
+            <div className={`flex flex-1 justify-center ${isReversed ? 'md:justify-start' : 'md:justify-end'}`} data-aos={isReversed ? "fade-right" : "fade-left"} data-aos-delay="100">
               <img
                 src={service.image}
                 alt={service.title}

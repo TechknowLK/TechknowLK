@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // modern icons
+import { Menu, X, ShoppingCart, User as UserIcon } from "lucide-react";
 import logo from "/assets/Img/logo02.png";
-  
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../lib/CartContext";
+import { useAuth } from "../lib/AuthContext";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { cartCount, setIsCartOpen } = useCart();
+  const { customer } = useAuth();
 
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Service", path: "/services" },
-    { name: "Product", path: "/products" },
+    { name: "Projects", path: "/projects" },
+    { name: "Products", path: "/products" },
     { name: "Blogs", path: "/blogs" },
     { name: "Contact", path: "/contact" },
   ];
@@ -54,13 +58,48 @@ export const NavBar = () => {
           ))}
         </ul>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden text-white p-2 rounded-md hover:bg-white/10 transition"
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Right side actions */}
+        <div className="flex items-center gap-3">
+          {/* Cart Button */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative p-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200"
+            aria-label="Open cart"
+          >
+            <ShoppingCart className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span
+                className="absolute -top-1 -right-1 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-black text-white px-1"
+                style={{ background: 'linear-gradient(135deg, #33A1E0, #1e7ab8)', boxShadow: '0 2px 8px rgba(51,161,224,0.5)' }}
+              >
+                {cartCount > 99 ? '99+' : cartCount}
+              </span>
+            )}
+          </button>
+
+          {/* User Profile Button */}
+          <button
+            onClick={() => navigate(customer ? "/profile" : "/login")}
+            className="p-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200 flex items-center gap-1.5"
+            aria-label="Profile"
+            title={customer ? `Logged in as ${customer.name}` : "Login / Register"}
+          >
+            <UserIcon className="w-5 h-5 text-gray-300 group-hover:text-white" />
+            {customer && (
+              <span className="hidden sm:inline text-xs font-semibold text-gray-300 max-w-[80px] truncate">
+                {customer.name.split(" ")[0]}
+              </span>
+            )}
+          </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden text-white p-2 rounded-md hover:bg-white/10 transition"
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
@@ -86,8 +125,21 @@ export const NavBar = () => {
               </NavLink>
             </li>
           ))}
+          <li onClick={() => setMenuOpen(false)}>
+            <NavLink
+              to={customer ? "/profile" : "/login"}
+              className={({ isActive }) =>
+                `block px-4 py-2 text-lg font-medium transition ${
+                  isActive ? "text-[#33A1E0]" : "text-gray-300 hover:text-white"
+                }`
+              }
+            >
+              {customer ? "My Profile" : "Login / Register"}
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
   );
 };
+

@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(255)
+  description  String   @db.Text
+  overview     String   @db.Text
+  features     Json     // Store as JSON array of strings
+  images       Json     // Store as JSON array of URLs
+  technologies Json     // Store as JSON array of strings
+  category     String   @db.VarChar(100)
+  demoUrl      String?  @db.VarChar(255)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique @db.VarChar(100)
+  password  String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model ClientProject {
+  id               Int       @id @default(autoincrement())
+  projectId        String    @unique @db.VarChar(50)
+  projectName      String    @db.VarChar(255)
+  clientName       String    @db.VarChar(255)
+  clientContact    String    @db.Text
+  category         String    @db.VarChar(100)
+  projectManager   String    @db.VarChar(255)
+  startDate        DateTime?
+  endDate          DateTime?
+  status           String    @db.VarChar(100)
+  estimatedBudget  Float     @default(0)
+  actualCost       Float     @default(0)
+  paymentStatus    String    @db.VarChar(100)
+  overallProgress  Int       @default(0)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  updates          ProjectUpdate[]
+
+  @@map("client_projects")
+}
+
+model ProjectUpdate {
+  id               Int            @id @default(autoincrement())
+  clientProjectId  Int
+  title            String         @db.VarChar(255)
+  description      String         @db.Text
+  additionalCost   Float          @default(0)
+  date             DateTime       @default(now())
+  
+  project          ClientProject  @relation(fields: [clientProjectId], references: [id], onDelete: Cascade)
+
+  @@map("project_updates")
+}
+
+model ShopCategory {
+  id            Int               @id @default(autoincrement())
+  name          String            @unique @db.VarChar(100)
+  subCategories ShopSubCategory[]
+  products      ShopProduct[]
+
+  @@map("shop_categories")
+}
+
+model ShopSubCategory {
+  id         Int           @id @default(autoincrement())
+  name       String        @db.VarChar(100)
+  categoryId Int
+  category   ShopCategory  @relation(fields: [categoryId], references: [id])
+  products   ShopProduct[]
+
+  @@map("shop_sub_categories")
+}
+
+model ShopBrand {
+  id        Int           @id @default(autoincrement())
+  name      String        @unique @db.VarChar(100)
+  products  ShopProduct[]
+
+  @@map("shop_brands")
+}
+
+model ShopProduct {
+  id            Int              @id @default(autoincrement())
+  name          String           @db.VarChar(255)
+  description   String           @db.Text
+  images        Json             // JSON array of URLs
+  categoryId    Int
+  category      ShopCategory     @relation(fields: [categoryId], references: [id])
+  subCategoryId Int?
+  subCategory   ShopSubCategory? @relation(fields: [subCategoryId], references: [id])
+  brandId       Int
+  brand         ShopBrand        @relation(fields: [brandId], references: [id])
+  documentation String?          @db.VarChar(255) // URL to PDF/Doc
+  price         Float?           @default(0)      // Optional price
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@map("shop_products")
+}
+
+model Order {
+  id              Int       @id @default(autoincrement())
+  orderType       String    @db.VarChar(50) // "SINGLE" | "CART"
+  orderMethod     String    @db.VarChar(50) // "WHATSAPP" | "EMAIL"
+  customerId      Int?      // Link to customer if logged in
+  customer        Customer? @relation(fields: [customerId], references: [id])
+  customerName    String    @db.VarChar(255)
+  customerPhone   String    @db.VarChar(100)
+  customerEmail   String?   @db.VarChar(255)
+  customerAddress String    @db.Text
+  customerNote    String?   @db.Text
+  items           Json      // JSON: [{ name: string, quantity: number, price: number, brand?: string }]
+  total           Float?
+  status          String    @default("PENDING") @db.VarChar(50) // "PENDING" | "COMPLETED" | "CANCELLED"
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@map("orders")
+}
+
+model Customer {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique @db.VarChar(255)
+  password   String   @db.VarChar(255)
+  name       String   @db.VarChar(255)
+  phone      String?  @db.VarChar(100)
+  address    String?  @db.Text
+  postalCode String?  @db.VarChar(20)
+  province   String?  @db.VarChar(100)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  orders     Order[]
+
+  @@map("customers")
+}
